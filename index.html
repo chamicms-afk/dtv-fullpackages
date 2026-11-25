@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chami Multi Shop | Dialog TV Prepaid Packages (798 / 998 / 1498)</title>
+  <title>Chami Multi Shop | Dialog Television Authorized Dealer (බලයලත් අලෙවි නියෝජිත)</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter & Plus Jakarta Sans & Noto Sans Sinhala -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -59,6 +59,39 @@
       background: radial-gradient(circle at 20% 20%, rgba(225, 29, 72, 0.28) 0%, transparent 50%),
                   radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.22) 0%, transparent 55%),
                   linear-gradient(135deg, #130912 0%, #0F172A 55%, #1A120B 100%);
+    }
+
+    /* Running Dealer Marquee / Ticker Animation */
+    @keyframes tickerSlide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .dealer-ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+    .dealer-ticker-track {
+      display: inline-flex;
+      width: max-content;
+      animation: tickerSlide 26s linear infinite;
+    }
+    .dealer-ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Welcome Offer Modal Transitions */
+    #offerModal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #offerModal.modal-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     /* Poster Export Mode overrides for compact screenshot-ready flyer */
@@ -127,46 +160,246 @@
         height: 84px;
       }
     }
+
+    /* CMS Dialog TV product showcase */
+    .product-showcase {
+      background:
+        radial-gradient(circle at 12% 10%, rgba(20, 115, 230, .22), transparent 36%),
+        linear-gradient(135deg, #081629 0%, #101b2d 55%, #10121c 100%);
+    }
+    .product-card {
+      background: linear-gradient(160deg, rgba(20, 35, 57, .98), rgba(8, 15, 28, .98));
+      border: 1px solid rgba(148, 163, 184, .22);
+      box-shadow: 0 18px 45px rgba(0,0,0,.24);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+    .product-image-link {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 1rem;
+      background: linear-gradient(145deg, #102c50, #07111f 72%);
+      border: 1px solid rgba(148, 163, 184, .2);
+      position: relative;
+    }
+    .product-image-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+    .product-image-link:hover img { transform: scale(1.045); }
+    .product-image-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .65rem; color: #bfdbfe; text-align: center;
+      padding: 1rem;
+    }
+    .product-image-placeholder i { font-size: 3rem; opacity: .9; }
+    .product-price {
+      background: linear-gradient(120deg, #0e7490, #1d4ed8);
+      border: 1px solid rgba(147,197,253,.35);
+    }
+    .quick-message-link {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      border: 1px solid rgba(52,211,153,.35);
+      background: rgba(5,150,105,.13);
+      color: #a7f3d0; border-radius: .8rem;
+      padding: .7rem .85rem; font-size: .78rem; font-weight: 700;
+      transition: .2s ease;
+    }
+    .quick-message-link:hover { background: rgba(5,150,105,.25); transform: translateY(-1px); }
+    .whatsapp-float {
+      position: fixed; right: 18px; bottom: 18px; z-index: 45;
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .85rem 1.1rem; border-radius: 999px;
+      background: linear-gradient(135deg,#16a34a,#047857);
+      color: white; font-weight: 800; font-size: .85rem;
+      box-shadow: 0 12px 35px rgba(5,150,105,.35);
+    }
+    @media (max-width: 480px) {
+      .whatsapp-float { right: 12px; bottom: 12px; padding: .8rem; }
+      .whatsapp-float .wa-label { display: none; }
+    }
   </style>
 </head>
 <body class="min-h-screen antialiased selection:bg-rose-600 selection:text-white pb-12">
 
-  <!-- Top Floating Action Bar (Always accessible for staff / owner) -->
-  <div class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-2.5">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
-        <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-medium">DTV Packages</span>
-        <span class="hidden sm:inline text-slate-500">•</span>
-        <span id="topActivePkgLabel" class="hidden sm:inline text-amber-400 font-semibold">Super Max Rs. 998</span>
-      </div>
+  <!-- ========================================================================= -->
+  <!-- 1. POPUP OFFER IMAGE MODAL (Pure 3:4 Image with on-image Exit mark)        -->
+  <!-- ========================================================================= -->
+  <div
+    id="offerModal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md modal-hidden"
+    onclick="if(event.target === this) closeOfferModal()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Special Offer"
+  >
+    <!-- Standalone 3:4 Poster Image Container (NO outer frame, NO header, NO bottom buttons) -->
+    <div class="relative w-full max-w-[340px] sm:max-w-[390px] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200 select-none">
+      
+      <!-- Exit Mark directly on the top-right corner of the image -->
+      <button
+        type="button"
+        onclick="closeOfferModal()"
+        class="absolute top-3 right-3 z-30 w-10 h-10 rounded-full bg-black/75 hover:bg-rose-600 text-white flex items-center justify-center text-lg shadow-2xl backdrop-blur-md transition-all active:scale-90 cursor-pointer border border-white/30"
+        title="Exit (Continue to Website)"
+        aria-label="Exit and Continue to Website"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-      <div class="flex items-center gap-2">
-        <!-- Toggle Poster Export Mode -->
-        <button
-          id="togglePosterBtn"
-          type="button"
-          onclick="togglePosterMode()"
-          class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 transition-all shadow-sm active:scale-95"
-        >
-          <i id="posterIcon" class="fa-solid fa-expand"></i>
-          <span id="posterBtnText">Poster / Flyer Export Mode</span>
-        </button>
+      <!-- Clickable 3:4 Offer Image or Fallback Visual -->
+      <a
+        id="offerImageLink"
+        href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20am%20interested%20in%20the%20Dialog%20TV%20Special%20Offer."
+        target="_blank"
+        rel="noopener"
+        class="block w-full h-full relative group cursor-pointer"
+      >
+        <!-- The Actual Image (3:4 aspect ratio, object-cover) -->
+        <img
+          id="offerPopupImage"
+          src=""
+          alt="Dialog TV Special Offer"
+          class="w-full h-full object-cover hidden"
+        />
 
-        <!-- Copy WhatsApp Post Text -->
-        <button
-          type="button"
-          onclick="copyWhatsAppText()"
-          class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-md shadow-emerald-950/50 transition-all active:scale-95"
-        >
-          <i class="fa-brands fa-whatsapp text-base"></i>
-          <span>Copy WhatsApp Post Text</span>
-        </button>
-      </div>
+        <!-- Default 3:4 Banner if no custom image is set yet -->
+        <div id="offerImagePlaceholder" class="w-full h-full p-6 bg-gradient-to-br from-[#1E1124] via-[#0F1C33] to-[#0A101D] flex flex-col items-center justify-center text-center text-white">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center text-white text-3xl shadow-lg mb-3">
+            <i class="fa-solid fa-satellite-dish"></i>
+          </div>
+          <span class="inline-block px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-black uppercase tracking-wider mb-2">
+            Special Promo Offer
+          </span>
+          <h3 class="text-xl sm:text-2xl font-black text-white leading-tight">නව සම්බන්ධතා විශේෂ දීමනාව</h3>
+          <p class="text-xs sm:text-sm text-amber-300 font-bold mt-1.5">Dialog TV Special Offer</p>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed max-w-[280px]">
+            Prepaid Full Set, Decoder (STB) සහ Accessories විශේෂ දීමනා Chami Multi Shop වෙතින්!
+          </p>
+          <div class="mt-4 px-3.5 py-1.5 rounded-xl bg-slate-950/80 border border-amber-500/30 text-[11px] text-amber-200">
+            <i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i> Tap image to claim on WhatsApp
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 
-  <!-- Toast Notification Banner (Replaces alert) -->
+
+  <!-- ========================================================================= -->
+  <!-- 2. RUNNING DEALER TICKER BANNER (Sinhala & English + Operator Logos)      -->
+  <!-- ========================================================================= -->
+  <div class="sticky top-0 z-40 bg-gradient-to-r from-slate-950 via-[#180B1A] to-slate-950 backdrop-blur-md border-b border-amber-500/30 py-2.5 shadow-xl dealer-ticker-wrap">
+    <div class="dealer-ticker-track flex items-center whitespace-nowrap text-xs sm:text-sm font-bold text-slate-200">
+      
+      <!-- Block 1 -->
+      <div class="flex items-center gap-5 sm:gap-6 px-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-600/25 border border-rose-500/50 text-amber-300 font-extrabold text-xs tracking-wide">
+          <i class="fa-solid fa-certificate text-rose-400 animate-spin" style="animation-duration: 8s;"></i>
+          බලයලත් අලෙවි නියෝජිත
+        </span>
+        <span class="text-slate-600">•</span>
+        <span class="text-white font-extrabold tracking-wider uppercase text-xs sm:text-sm">
+          Authorized Dealer
+        </span>
+        <span class="text-slate-600">•</span>
+
+        <!-- Telecom Operator Brand Logos: Dialog, Mobitel, Hutch, Airtel -->
+        <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-white/10 rounded-xl border border-white/20 shadow-inner">
+          <img
+            src="https://lh3.googleusercontent.com/d/1bAEy99QFJM3bAjuMLJK6Z-PnPQ3iJN8b"
+            alt="Dialog"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/d/1IeDlOE3Ti_l-pBYxz4DB3jeirDFuxPjn"
+            alt="Mobitel"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/d/1txqxjB9NSqmUmatH9l1vUX4CU30wJMNe"
+            alt="Hutch"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/d/1UElQSeZ0I23C6W0AzGXwQBcGWNteJa69"
+            alt="Airtel"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+        </div>
+
+        <span class="text-slate-600">•</span>
+        <span class="text-amber-400 font-extrabold flex items-center gap-1.5">
+          <i class="fa-solid fa-store text-amber-300"></i> Chami Multi Shop (CMS) — Maggona
+        </span>
+        <span class="text-slate-600">•</span>
+        <span class="text-sky-300 font-extrabold flex items-center gap-1.5">
+          <i class="fa-solid fa-phone-volume text-sky-400"></i> Hotlines: 0770 54 54 64 / 0710 54 54 64
+        </span>
+        <span class="text-slate-600">•</span>
+      </div>
+
+      <!-- Block 2 (Duplicate for continuous seamless infinite loop) -->
+      <div class="flex items-center gap-5 sm:gap-6 px-4" aria-hidden="true">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-600/25 border border-rose-500/50 text-amber-300 font-extrabold text-xs tracking-wide">
+          <i class="fa-solid fa-certificate text-rose-400 animate-spin" style="animation-duration: 8s;"></i>
+          බලයලත් අලෙවි නියෝජිත
+        </span>
+        <span class="text-slate-600">•</span>
+        <span class="text-white font-extrabold tracking-wider uppercase text-xs sm:text-sm">
+          Authorized Dealer
+        </span>
+        <span class="text-slate-600">•</span>
+
+        <!-- Telecom Operator Brand Logos: Dialog, Mobitel, Hutch, Airtel -->
+        <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-white/10 rounded-xl border border-white/20 shadow-inner">
+          <img
+            src="https://lh3.googleusercontent.com/d/1bAEy99QFJM3bAjuMLJK6Z-PnPQ3iJN8b"
+            alt="Dialog"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/d/1IeDlOE3Ti_l-pBYxz4DB3jeirDFuxPjn"
+            alt="Mobitel"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/d/1txqxjB9NSqmUmatH9l1vUX4CU30wJMNe"
+            alt="Hutch"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+          <img
+            src="https://lh3.googleusercontent.com/d/1UElQSeZ0I23C6W0AzGXwQBcGWNteJa69"
+            alt="Airtel"
+            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
+          />
+        </div>
+
+        <span class="text-slate-600">•</span>
+        <span class="text-amber-400 font-extrabold flex items-center gap-1.5">
+          <i class="fa-solid fa-store text-amber-300"></i> Chami Multi Shop (CMS) — Maggona
+        </span>
+        <span class="text-slate-600">•</span>
+        <span class="text-sky-300 font-extrabold flex items-center gap-1.5">
+          <i class="fa-solid fa-phone-volume text-sky-400"></i> Hotlines: 0770 54 54 64 / 0710 54 54 64
+        </span>
+        <span class="text-slate-600">•</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Toast Notification Banner -->
   <div
     id="toastMessage"
     class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"
@@ -194,7 +427,7 @@
             <div class="relative shrink-0 flex items-center justify-center">
               <img
                 id="cmsBrandLogo"
-                src="https://lh3.googleusercontent.com/d/1ywEg_uZcRt5DdQiPZCA-Yb4Ln7y70YgS"
+                src="https://lh3.googleusercontent.com/d/1Gb-zO2Q4Lm5rGO5o1CXnUQ9XQniZ8TaO"
                 alt="Chami Multi Shop CMS Logo"
                 class="brand-header-logo"
               />
@@ -232,7 +465,103 @@
         </div>
       </header>
 
-      <!-- 2. PACKAGE HERO BANNER -->
+
+      <!-- ========================================================================= -->
+      <!-- 2. DIALOG TV PREPAID PRODUCTS (Full Set, Decoder STB Only, Accessories)   -->
+      <!-- ========================================================================= -->
+      <section class="product-showcase px-4 py-7 sm:px-8 sm:py-9 border-b border-slate-800/80">
+        <div class="text-center mb-6">
+          <span class="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-sky-200">
+            <i class="fa-solid fa-satellite-dish"></i> Available at Chami Multi Shop
+          </span>
+          <h2 class="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-white">Dialog Television <span class="text-sky-300">(Prepaid)</span></h2>
+          <p class="mt-2 text-sm text-slate-300">Choose your preferred connection option and contact us on WhatsApp</p>
+        </div>
+
+        <!-- 3-Item Product Showcase Grid: Full Set, Decoder, Accessories -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          <!-- 1. Full Set -->
+          <article class="product-card rounded-3xl p-4 sm:p-5">
+            <a id="fullSetImageLink" class="product-image-link" href="#" target="_blank" rel="noopener" aria-label="View Dialog TV Full Set image">
+              <img id="fullSetImage" alt="Dialog Television prepaid full set" class="hidden" />
+              <div id="fullSetImagePlaceholder" class="product-image-placeholder">
+                <i class="fa-solid fa-satellite-dish"></i>
+                <span class="font-bold text-sm">3:4 Product Image</span>
+                <span class="text-xs text-sky-100/70">Add Full Set image URL in settings</span>
+              </div>
+              <span class="absolute left-3 top-3 rounded-full bg-sky-500/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">12 months Warranty </span>
+            </a>
+            <div class="pt-4">
+              <p class="text-[10px] uppercase tracking-[.18em] text-sky-300 font-bold">Complete Connection</p>
+              <h3 class="mt-1 font-display text-xl font-extrabold text-white">Full Set</h3>
+              <p class="mt-1 text-xs leading-relaxed text-slate-300">Dialog TV decoder, dish antenna and required connection accessories.</p>
+              <div class="product-price mt-4 rounded-xl px-4 py-3">
+                <p class="text-[10px] uppercase tracking-wider text-sky-100 font-bold">Price</p>
+                <p id="fullSetPrice" class="mt-0.5 text-xl font-extrabold text-white">Contact for Price</p>
+              </div>
+              <a class="quick-message-link mt-3" href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20want%20a%20Dialog%20TV%20Prepaid%20Full%20Set." target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp text-lg"></i> I want a Full Set
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. Decoder Only -->
+          <article class="product-card rounded-3xl p-4 sm:p-5">
+            <a id="decoderImageLink" class="product-image-link" href="#" target="_blank" rel="noopener" aria-label="View Dialog TV decoder image">
+              <img id="decoderImage" alt="Dialog Television prepaid decoder STB only" class="hidden" />
+              <div id="decoderImagePlaceholder" class="product-image-placeholder">
+                <i class="fa-solid fa-tv"></i>
+                <span class="font-bold text-sm">3:4 Product Image</span>
+                <span class="text-xs text-sky-100/70">Add Decoder image URL in settings</span>
+              </div>
+              <span class="absolute left-3 top-3 rounded-full bg-indigo-500/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">12 Months warranty</span>
+            </a>
+            <div class="pt-4">
+              <p class="text-[10px] uppercase tracking-[.18em] text-indigo-300 font-bold">Decoder Option</p>
+              <h3 class="mt-1 font-display text-xl font-extrabold text-white">Decoder – STB</h3>
+              <p class="mt-1 text-xs leading-relaxed text-slate-300">Prepaid decoder option for customers who only need the set-top box.</p>
+              <div class="product-price mt-4 rounded-xl px-4 py-3">
+                <p class="text-[10px] uppercase tracking-wider text-sky-100 font-bold">Price</p>
+                <p id="decoderPrice" class="mt-0.5 text-xl font-extrabold text-white">Contact for Price</p>
+              </div>
+              <a class="quick-message-link mt-3" href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20want%20a%20Dialog%20TV%20Decoder%20(STB%20Only)." target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp text-lg"></i> I want Decoder Only
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. Accessories (New) -->
+          <article class="product-card rounded-3xl p-4 sm:p-5">
+            <a id="accessoriesImageLink" class="product-image-link" href="#" target="_blank" rel="noopener" aria-label="View Dialog TV Accessories image">
+              <img id="accessoriesImage" alt="Dialog Television prepaid accessories and parts" class="hidden" />
+              <div id="accessoriesImagePlaceholder" class="product-image-placeholder">
+                <i class="fa-solid fa-plug-circle-bolt"></i>
+                <span class="font-bold text-sm">3:4 Product Image</span>
+                <span class="text-xs text-sky-100/70">Add Accessories image URL in settings</span>
+              </div>
+              <span class="absolute left-3 top-3 rounded-full bg-amber-500/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">06 months Warranty</span>
+            </a>
+            <div class="pt-4">
+              <p class="text-[10px] uppercase tracking-[.18em] text-amber-300 font-bold">Original Spare Parts</p>
+              <h3 class="mt-1 font-display text-xl font-extrabold text-white">Accessories</h3>
+              <p class="mt-1 text-xs leading-relaxed text-slate-300">Dialog TV remotes, power adapters, HDMI/AV cables, LNBs &amp; connection accessories.</p>
+              <div class="product-price mt-4 rounded-xl px-4 py-3">
+                <p class="text-[10px] uppercase tracking-wider text-sky-100 font-bold">Price</p>
+                <p id="accessoriesPrice" class="mt-0.5 text-xl font-extrabold text-white">Contact for Price</p>
+              </div>
+              <a class="quick-message-link mt-3" href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20want%20Dialog%20TV%20Accessories.%20Please%20send%20details." target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp text-lg"></i> I want Accessories
+              </a>
+            </div>
+          </article>
+        </div>
+
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- 3. PACKAGE HERO BANNER (Super Entry, Super Max, Sports Plus)              -->
+      <!-- ========================================================================= -->
       <section class="hero-glow relative px-5 py-6 sm:px-8 sm:py-7 border-b border-slate-800/80">
         <!-- Package Selector Switcher Tabs -->
         <div class="interactive-controls mb-6">
@@ -291,6 +620,21 @@
             <p id="heroPkgDesc" class="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
               Enjoy Sri Lanka’s favorite local channels, international blockbusters, kids’ cartoons, live sports, music, religious broadcasts, and Nenasa educational channels in one complete package.
             </p>
+
+            <!-- 798 Prepaid Eligibility Notice -->
+            <div id="package798Notice" class="hidden mt-4 max-w-2xl rounded-2xl border border-amber-400/50 bg-amber-500/10 px-4 py-3 text-left shadow-lg shadow-amber-950/20" role="alert" aria-live="polite">
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-amber-400/15 text-amber-300">
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                </span>
+                <div>
+                  <p class="text-xs sm:text-sm font-extrabold text-amber-300 mb-1">විශේෂ දැනුම්දීමක් – Rs. 798 පැකේජය</p>
+                  <p class="text-xs sm:text-sm leading-relaxed text-amber-50">
+                    2026 මැයි 13 සිට අලුතින් මිලදී ගත් Dialog TV Prepaid සම්බන්ධතා සඳහා රු. 798 පැකේජය තෝරා ගැනීමට නොහැකිය.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Price & Channel Count Badges -->
@@ -320,7 +664,7 @@
         </div>
       </section>
 
-      <!-- 3. INTERACTIVE SEARCH & CATEGORY FILTER PILLS (Hidden in Poster Export Mode & Compare View) -->
+      <!-- 4. INTERACTIVE SEARCH & CATEGORY FILTER PILLS -->
       <section id="filterBarSection" class="interactive-controls bg-slate-900/70 border-b border-slate-800 px-4 py-4 sm:px-8">
         <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 mb-3.5">
           <!-- Search Bar -->
@@ -363,12 +707,12 @@
         </div>
       </section>
 
-      <!-- 4. CHANNEL GRID SHOWCASE -->
+      <!-- 5. CHANNEL GRID SHOWCASE -->
       <section id="channelsContainer" class="p-4 sm:p-8 space-y-6">
         <!-- Categories and Channel Cards rendered dynamically via JS -->
       </section>
 
-      <!-- 5. ALL 3 PACKAGES COMPARISON VIEW -->
+      <!-- 6. ALL 3 PACKAGES COMPARISON VIEW -->
       <section id="comparisonContainer" class="hidden p-4 sm:p-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <!-- Card 1: Super Entry 798 -->
@@ -558,7 +902,7 @@
         onchange="handleLogoFileSelected(event)"
       />
 
-      <!-- 6. SHOP CONTACT & PROMO FOOTER -->
+      <!-- 7. SHOP CONTACT & PROMO FOOTER -->
       <footer class="bg-gradient-to-r from-slate-950 via-[#150A13] to-slate-950 border-t border-amber-500/25 px-5 py-6 sm:px-8">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-5">
           <!-- Call & WhatsApp Action Pills -->
@@ -588,7 +932,7 @@
                 <i class="fa-solid fa-clock"></i>
               </div>
               <div>
-                <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Open Daily (Wadduwa)</p>
+                <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Open Daily (Maggona)</p>
                 <p class="text-xs sm:text-sm font-extrabold text-amber-300">6:00 AM – 10:30 PM</p>
               </div>
             </div>
@@ -613,7 +957,118 @@
     </div>
   </main>
 
+  <!-- Sticky WhatsApp Floating Contact Pill -->
+  <a class="whatsapp-float" href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20need%20information%20about%20Dialog%20Television." target="_blank" rel="noopener" aria-label="Chat with Chami Multi Shop on WhatsApp">
+    <i class="fa-brands fa-whatsapp text-xl"></i><span class="wa-label">Chat on WhatsApp</span>
+  </a>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC & PRODUCT CONFIGURATION                                  -->
+  <!-- ========================================================================= -->
   <script>
+    /**
+     * 1. WELCOME OFFER POPUP CONFIGURATION
+     * Set 'imageUrl' to your offer image path (e.g. "assets/offer.jpg" or direct URL).
+     * Set 'enabled' to false if you wish to temporarily disable the popup.
+     */
+    const CMS_OFFER_POPUP = {
+      enabled: true,
+      imageUrl: "https://lh3.googleusercontent.com/d/1oewVv4jwoXTmUnlWpJHJbBDAgSlQbtwj", // <-- Add your offer image link here!
+      imageLink: "https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20am%20interested%20in%20the%20Dialog%20TV%20Special%20Offer."
+    };
+
+    function initOfferModal() {
+      const modal = document.getElementById('offerModal');
+      if (!modal || !CMS_OFFER_POPUP.enabled) return;
+
+      const img = document.getElementById('offerPopupImage');
+      const placeholder = document.getElementById('offerImagePlaceholder');
+      const link = document.getElementById('offerImageLink');
+
+      if (link && CMS_OFFER_POPUP.imageLink) {
+        link.href = CMS_OFFER_POPUP.imageLink;
+      }
+
+      if (img && CMS_OFFER_POPUP.imageUrl) {
+        img.src = CMS_OFFER_POPUP.imageUrl;
+        img.onload = () => {
+          img.classList.remove('hidden');
+          if (placeholder) placeholder.classList.add('hidden');
+        };
+        img.onerror = () => {
+          img.classList.add('hidden');
+          if (placeholder) placeholder.classList.remove('hidden');
+        };
+      }
+
+      // Display the modal immediately on page load
+      modal.classList.remove('modal-hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeOfferModal() {
+      const modal = document.getElementById('offerModal');
+      if (!modal) return;
+      modal.classList.add('modal-hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Dismiss modal on pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeOfferModal();
+    });
+
+    /**
+     * 2. PRODUCT SETTINGS — Full Set, Decoder, and Accessories
+     * Update image URLs, links and prices here.
+     * Recommended aspect ratio: 3:4.
+     */
+    const CMS_DIALOG_PRODUCTS = {
+      fullSet: {
+        imageUrl: "https://lh3.googleusercontent.com/d/1XPNwSGuXzaAA7ZivnAE4s2k1-i4C5j6D",
+        imageLink: "https://lh3.googleusercontent.com/d/1XPNwSGuXzaAA7ZivnAE4s2k1-i4C5j6D",
+        price: "Rs.8990/="
+      },
+      decoder: {
+        imageUrl: "https://lh3.googleusercontent.com/d/1x66k1niJpoG1wcG83v_7PX9wOcY5U6hM",
+        imageLink: "https://lh3.googleusercontent.com/d/1x66k1niJpoG1wcG83v_7PX9wOcY5U6hM",
+        price: "Rs.4990/="
+      },
+      accessories: {
+        imageUrl: "https://lh3.googleusercontent.com/d/1dEulbiKEEtc13vbBjuc9RhZO36aPfKUa",
+        imageLink: "https://lh3.googleusercontent.com/d/1dEulbiKEEtc13vbBjuc9RhZO36aPfKUa",
+        price: "Contact for Price"
+      }
+    };
+
+    function setupProductCard(key) {
+      const item = CMS_DIALOG_PRODUCTS[key];
+      if (!item) return;
+      const prefix = key; // "fullSet", "decoder", or "accessories"
+      const image = document.getElementById(prefix + "Image");
+      const imageLink = document.getElementById(prefix + "ImageLink");
+      const placeholder = document.getElementById(prefix + "ImagePlaceholder");
+      const price = document.getElementById(prefix + "Price");
+
+      if (price) price.textContent = item.price || "Contact for Price";
+      if (imageLink && item.imageLink) {
+        imageLink.href = item.imageLink;
+      } else if (imageLink) {
+        imageLink.href = "#";
+        imageLink.addEventListener("click", event => event.preventDefault());
+      }
+
+      if (image && item.imageUrl) {
+        image.src = item.imageUrl;
+        image.classList.remove("hidden");
+        if (placeholder) placeholder.classList.add("hidden");
+        image.onerror = () => {
+          image.classList.add("hidden");
+          if (placeholder) placeholder.classList.remove("hidden");
+        };
+      }
+    }
+
     /**
      * Removes outer white background around the brand logo image using HTML5 Canvas
      * so it blends cleanly onto dark/colored headers without any white box.
@@ -1003,10 +1458,21 @@
       activePackage = pkgKey;
       const meta = packageMeta[pkgKey];
 
-      document.getElementById('topActivePkgLabel').textContent = `${meta.name} Rs. ${meta.price}`;
+      const topActivePkgLabel = document.getElementById('topActivePkgLabel');
+      if (topActivePkgLabel) {
+        topActivePkgLabel.textContent = `${meta.name} Rs. ${meta.price}`;
+      }
+
       document.getElementById('heroBadgeText').textContent = meta.badge;
       document.getElementById('heroPkgTitle').textContent = meta.title;
       document.getElementById('heroPkgDesc').textContent = meta.desc;
+
+      // Show the eligibility notice only while the Rs. 798 package is selected.
+      const package798Notice = document.getElementById('package798Notice');
+      if (package798Notice) {
+        package798Notice.classList.toggle('hidden', pkgKey !== '798');
+      }
+
       document.getElementById('heroPriceValue').textContent = meta.price;
       document.getElementById('heroChannelCount').textContent = meta.count;
       document.getElementById('footerPkgLabel').textContent = `Dialog Television ${meta.name} (Rs. ${meta.price}) Package Guide`;
@@ -1356,13 +1822,13 @@
         }
 
         body.classList.add('poster-mode');
-        btnText.textContent = 'Exit Poster Mode';
-        icon.className = 'fa-solid fa-compress';
+        if (btnText) btnText.textContent = 'Exit Poster Mode';
+        if (icon) icon.className = 'fa-solid fa-compress';
         showToast('Poster Export Mode Enabled', 'Compact screenshot-ready view activated for Facebook & WhatsApp.');
       } else {
         body.classList.remove('poster-mode');
-        btnText.textContent = 'Poster / Flyer Export Mode';
-        icon.className = 'fa-solid fa-expand';
+        if (btnText) btnText.textContent = 'Poster / Flyer Export Mode';
+        if (icon) icon.className = 'fa-solid fa-expand';
         showToast('Interactive Mode Restored', 'Package tabs, search bar and filters are active again.');
       }
     }
@@ -1388,7 +1854,7 @@
           `"Beyond the Page, Beyond the Connection"`,
           `📞 *Call:* 0770 54 54 64 / 0710 54 54 64`,
           `💬 *WhatsApp:* 070 1193383`,
-          `📍 *Location:* Wadduwa, Sri Lanka`,
+          `📍 *Location:* Maggona, Sri Lanka`,
           `⏰ *Open Hours:* 6:00 AM – 10:30 PM`
         ];
       } else {
@@ -1413,7 +1879,7 @@
         lines.push(`──────────────────────`);
         lines.push(`📞 *Call:* 0770 54 54 64 / 0710 54 54 64`);
         lines.push(`💬 *WhatsApp:* 070 1193383`);
-        lines.push(`📍 *Location:* Wadduwa, Sri Lanka`);
+        lines.push(`📍 *Location:* Maggona, Sri Lanka`);
         lines.push(`⏰ *Open Hours:* 6:00 AM – 10:30 PM`);
       }
 
@@ -1455,7 +1921,11 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       makeLogoOuterBackgroundTransparent(document.getElementById('cmsBrandLogo'));
+      setupProductCard('fullSet');
+      setupProductCard('decoder');
+      setupProductCard('accessories');
       selectPackage('998');
+      initOfferModal();
     });
   </script>
 </body>
