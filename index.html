@@ -561,7 +561,7 @@
           </p>
           <button
             type="button"
-            onclick="selectCategory('all')"
+            onclick="openAllChannels()"
             class="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:brightness-110 text-white text-xs sm:text-sm font-extrabold shadow-lg transition cursor-pointer"
           >
             <i class="fa-solid fa-layer-group"></i>
@@ -658,7 +658,7 @@
           <i class="fa-solid fa-tv text-xl"></i>
         </div>
         <h3 class="font-display text-lg font-bold text-white">No matching channels found</h3>
-        <button type="button" onclick="selectCategory('all')" class="mt-4 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition cursor-pointer">
+        <button type="button" onclick="openAllChannels()" class="mt-4 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition cursor-pointer">
           Show All Channels
         </button>
       </div>
@@ -726,6 +726,56 @@
     </div>
   </main>
 
+  <!-- PRODUCT IMAGE ZOOM LIGHTBOX MODAL -->
+  <div
+    id="productZoomModal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden"
+    onclick="if(event.target === this) closeProductZoomModal()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Product Image Preview"
+  >
+    <div class="relative w-full max-w-md sm:max-w-lg rounded-3xl overflow-hidden bg-slate-950 border border-slate-700/90 shadow-2xl">
+      <div class="flex items-center justify-between gap-2 px-4 py-3 bg-slate-900/95 border-b border-slate-800">
+        <button
+          type="button"
+          onclick="closeProductZoomModal()"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs sm:text-sm font-bold border border-slate-600/80 transition cursor-pointer"
+        >
+          <i class="fa-solid fa-arrow-left text-amber-400"></i>
+          <span>Back</span>
+        </button>
+        <span id="productZoomTitle" class="text-xs sm:text-sm font-extrabold text-slate-200 truncate px-2">Product Image</span>
+        <button
+          type="button"
+          onclick="closeProductZoomModal()"
+          class="w-9 h-9 rounded-full bg-rose-600/90 hover:bg-rose-500 text-white flex items-center justify-center text-base shadow transition cursor-pointer"
+          aria-label="Exit Zoom"
+          title="Exit"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-3 sm:p-4 bg-slate-950 flex items-center justify-center">
+        <img
+          id="productZoomImage"
+          src=""
+          alt="Zoomed Product"
+          class="max-h-[72vh] w-auto rounded-2xl object-contain shadow-xl"
+        />
+      </div>
+      <div class="px-4 py-3 bg-slate-900/95 border-t border-slate-800 flex justify-center">
+        <button
+          type="button"
+          onclick="closeProductZoomModal()"
+          class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:brightness-110 text-white text-xs sm:text-sm font-extrabold shadow transition cursor-pointer"
+        >
+          <i class="fa-solid fa-xmark mr-1.5"></i> Close / Exit Preview
+        </button>
+      </div>
+    </div>
+  </div>
+
   <a class="whatsapp-float" href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20need%20information%20about%20Dialog%20Television." target="_blank" rel="noopener" aria-label="Chat with Chami Multi Shop on WhatsApp">
     <i class="fa-brands fa-whatsapp text-xl"></i><span class="wa-label">Chat on WhatsApp</span>
   </a>
@@ -763,7 +813,10 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeOfferModal();
+      if (e.key === 'Escape') {
+        closeOfferModal();
+        closeProductZoomModal();
+      }
     });
 
     const CMS_DIALOG_PRODUCTS = {
@@ -784,6 +837,31 @@
       }
     };
 
+    const PRODUCT_TITLES = {
+      fullSet: "Dialog TV Prepaid – Full Set",
+      decoder: "Dialog TV Prepaid – Decoder (STB)",
+      accessories: "Dialog TV – Accessories"
+    };
+
+    function openProductZoomModal(imageUrl, title) {
+      if (!imageUrl) return;
+      const modal = document.getElementById("productZoomModal");
+      const img = document.getElementById("productZoomImage");
+      const titleEl = document.getElementById("productZoomTitle");
+      if (!modal || !img) return;
+      img.src = imageUrl;
+      if (titleEl) titleEl.textContent = title || "Product Image";
+      modal.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
+    }
+
+    function closeProductZoomModal() {
+      const modal = document.getElementById("productZoomModal");
+      if (!modal) return;
+      modal.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
+    }
+
     function setupProductCard(key) {
       const item = CMS_DIALOG_PRODUCTS[key];
       if (!item) return;
@@ -792,7 +870,15 @@
       const placeholder = document.getElementById(key + "ImagePlaceholder");
       const price = document.getElementById(key + "Price");
       if (price) price.textContent = item.price || "Contact for Price";
-      if (imageLink && item.imageLink) imageLink.href = item.imageLink;
+      if (imageLink && (item.imageLink || item.imageUrl)) {
+        const targetUrl = item.imageLink || item.imageUrl;
+        imageLink.href = targetUrl;
+        imageLink.removeAttribute("target");
+        imageLink.onclick = function (e) {
+          e.preventDefault();
+          openProductZoomModal(targetUrl, PRODUCT_TITLES[key]);
+        };
+      }
       if (image && item.imageUrl) {
         image.src = item.imageUrl;
         image.classList.remove("hidden");
@@ -1152,22 +1238,27 @@
       renderChannels();
     }
 
-    function getFallbackBadgeHtml(ch) {
-      const textSize = ch.code.length > 4 ? 'text-[9px]' : 'text-[11px]';
+    function openAllChannels() {
+      activeCategory = 'all';
+      renderCategoryPills();
+      renderChannels();
+    }
+
+    function getInsideBoxHtml(ch) {
       const textColor = ch.darkText ? 'text-slate-950' : 'text-white';
       return `
-        <div class="channel-fallback w-full h-full bg-gradient-to-br ${ch.bg} flex items-center justify-center ${textColor} font-display font-extrabold ${textSize} px-1 text-center">
-          ${escapeHtml(ch.code)}
+        <div class="channel-fallback w-full h-full bg-gradient-to-br ${ch.bg} flex items-center justify-center ${textColor} px-1 text-center leading-none">
+          <span class="font-display font-extrabold text-sm tracking-tight">${escapeHtml(String(ch.chNo))}</span>
         </div>
       `;
     }
 
     function getChannelLogoHtml(ch) {
       const logoUrl = customUploadedLogos[ch.name] || (dialogPrepaidLogoUrls[ch.name] || '').trim();
-      const fallback = getFallbackBadgeHtml(ch);
+      const insideBox = getInsideBoxHtml(ch);
 
       if (!logoUrl) {
-        return fallback;
+        return insideBox;
       }
 
       return `
@@ -1176,9 +1267,7 @@
           alt="${escapeHtml(ch.name)} logo"
           class="channel-logo-img w-full h-full object-contain bg-white p-0.5 rounded-lg"
         />
-        <div class="channel-fallback hidden w-full h-full bg-gradient-to-br ${ch.bg} flex items-center justify-center ${ch.darkText ? 'text-slate-950' : 'text-white'} font-display font-extrabold ${ch.code.length > 4 ? 'text-[9px]' : 'text-[11px]'} px-1 text-center">
-          ${escapeHtml(ch.code)}
-        </div>
+        ${insideBox.replace('class="channel-fallback ', 'class="channel-fallback hidden ')}
       `;
     }
 
@@ -1240,22 +1329,15 @@
         const cardsHtml = filteredChannels.map(ch => `
           <div
             onclick="triggerChannelLogoUpload('${ch.name.replace(/'/g, "\'")}')"
-            title="Ch. ${ch.chNo} — Click to upload custom logo for ${escapeHtml(ch.name)}"
+            title="Ch. ${ch.chNo} (${escapeHtml(ch.code)}) — Click to upload custom logo for ${escapeHtml(ch.name)}"
             class="channel-card group cursor-pointer flex items-center gap-2.5 bg-slate-900/95 hover:bg-slate-800 border border-slate-800 hover:border-amber-400/50 rounded-xl p-2 transition-all duration-200 shadow-sm"
           >
             <div class="channel-badge tv-logo-frame relative w-14 h-10 rounded-lg shrink-0 border border-white/15 overflow-hidden">
               ${getChannelLogoHtml(ch)}
             </div>
-            <div class="min-w-0 flex-1">
-              <div class="flex items-center gap-1.5 mb-0.5">
-                <span class="inline-flex items-center px-1.5 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-[10px] font-extrabold text-amber-300 leading-tight">
-                  Ch. ${String(ch.chNo).padStart(2, '0')}
-                </span>
-              </div>
-              <p class="channel-name text-xs sm:text-[13px] font-semibold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
-                ${escapeHtml(ch.name)}
-              </p>
-            </div>
+            <span class="channel-name text-xs sm:text-[13px] font-semibold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
+              ${escapeHtml(ch.name)}
+            </span>
           </div>
         `).join('');
 
@@ -1300,7 +1382,11 @@
     }
 
     function selectCategory(categoryId) {
-      activeCategory = categoryId;
+      if (categoryId === 'all') {
+        activeCategory = activeCategory === 'all' ? null : 'all';
+      } else {
+        activeCategory = activeCategory === categoryId ? null : categoryId;
+      }
       renderCategoryPills();
       renderChannels();
     }
