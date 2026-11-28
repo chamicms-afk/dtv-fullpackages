@@ -4,13 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chami Multi Shop | Dialog Television Authorized Dealer (බලයලත් අලෙවි නියෝජිත)</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Plus Jakarta Sans & Noto Sans Sinhala -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <script>
@@ -38,14 +35,12 @@
   </script>
 
   <style>
-    /* Custom scrollbar & utility refinements */
     body {
       background-color: #070A12;
       color: #F8FAFC;
       font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
     }
 
-    /* Hide scrollbar for category pills on mobile while keeping scrollability */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -54,21 +49,15 @@
       scrollbar-width: none;
     }
 
-    /* Subtle animated glow behind hero */
     .hero-glow {
       background: radial-gradient(circle at 20% 20%, rgba(225, 29, 72, 0.28) 0%, transparent 50%),
                   radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.22) 0%, transparent 55%),
                   linear-gradient(135deg, #130912 0%, #0F172A 55%, #1A120B 100%);
     }
 
-    /* Running Dealer Marquee / Ticker Animation */
     @keyframes tickerSlide {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     .dealer-ticker-wrap {
       overflow: hidden;
@@ -84,7 +73,6 @@
       animation-play-state: paused;
     }
 
-    /* Welcome Offer Modal Transitions */
     #offerModal {
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
@@ -94,74 +82,33 @@
       pointer-events: none;
     }
 
-    /* Poster Export Mode overrides for compact screenshot-ready flyer */
-    body.poster-mode .interactive-controls {
-      display: none !important;
-    }
-
-    body.poster-mode #flyer-canvas {
-      max-width: 1120px;
-      margin-top: 0.75rem;
-      margin-bottom: 0.75rem;
-      border-width: 2px;
-      border-color: rgba(245, 158, 11, 0.45);
-      box-shadow: 0 25px 70px -15px rgba(225, 29, 72, 0.35);
-    }
-
-    body.poster-mode .category-section {
-      margin-bottom: 0.95rem !important;
-      padding: 0.75rem !important;
-    }
-
-    body.poster-mode .category-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-      gap: 0.4rem !important;
-    }
-
-    @media (min-width: 768px) {
-      body.poster-mode .category-grid {
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-      }
-    }
-
-    body.poster-mode .channel-card {
-      padding: 0.35rem 0.5rem !important;
-      border-radius: 0.5rem !important;
-    }
-
-    body.poster-mode .channel-badge {
-      width: 2.2rem !important;
-      height: 1.75rem !important;
-      font-size: 0.65rem !important;
-    }
-
-    body.poster-mode .channel-name {
-      font-size: 0.72rem !important;
-      line-height: 1.1 !important;
-    }
-
-    /* Broadcast Logo Pill Frame */
     .tv-logo-frame {
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 10px rgba(0, 0, 0, 0.45);
     }
 
-    /* Brand Header Logo Clean Styling */
-    .brand-header-logo {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+    .brand-header-logo-wrap {
+      width: 76px;
+      height: 76px;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 2px solid rgba(245, 158, 11, 0.65);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
     }
-
+    .brand-header-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.14);
+      display: block;
+    }
     @media (min-width: 640px) {
-      .brand-header-logo {
-        width: 84px;
-        height: 84px;
+      .brand-header-logo-wrap {
+        width: 88px;
+        height: 88px;
       }
     }
 
-    /* CMS Dialog TV product showcase */
     .product-showcase {
       background:
         radial-gradient(circle at 12% 10%, rgba(20, 115, 230, .22), transparent 36%),
@@ -232,9 +179,7 @@
 </head>
 <body class="min-h-screen antialiased selection:bg-rose-600 selection:text-white pb-12">
 
-  <!-- ========================================================================= -->
-  <!-- 1. POPUP OFFER IMAGE MODAL (Pure 3:4 Image with on-image Exit mark)        -->
-  <!-- ========================================================================= -->
+  <!-- 1. POPUP OFFER IMAGE MODAL -->
   <div
     id="offerModal"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md modal-hidden"
@@ -243,10 +188,7 @@
     aria-modal="true"
     aria-label="Special Offer"
   >
-    <!-- Standalone 3:4 Poster Image Container (NO outer frame, NO header, NO bottom buttons) -->
-    <div class="relative w-full max-w-[340px] sm:max-w-[390px] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200 select-none">
-      
-      <!-- Exit Mark directly on the top-right corner of the image -->
+    <div class="relative w-full max-w-[340px] sm:max-w-[390px] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl select-none">
       <button
         type="button"
         onclick="closeOfferModal()"
@@ -257,7 +199,6 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <!-- Clickable 3:4 Offer Image or Fallback Visual -->
       <a
         id="offerImageLink"
         href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20am%20interested%20in%20the%20Dialog%20TV%20Special%20Offer."
@@ -265,15 +206,12 @@
         rel="noopener"
         class="block w-full h-full relative group cursor-pointer"
       >
-        <!-- The Actual Image (3:4 aspect ratio, object-cover) -->
         <img
           id="offerPopupImage"
           src=""
           alt="Dialog TV Special Offer"
           class="w-full h-full object-cover hidden"
         />
-
-        <!-- Default 3:4 Banner if no custom image is set yet -->
         <div id="offerImagePlaceholder" class="w-full h-full p-6 bg-gradient-to-br from-[#1E1124] via-[#0F1C33] to-[#0A101D] flex flex-col items-center justify-center text-center text-white">
           <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center text-white text-3xl shadow-lg mb-3">
             <i class="fa-solid fa-satellite-dish"></i>
@@ -283,60 +221,28 @@
           </span>
           <h3 class="text-xl sm:text-2xl font-black text-white leading-tight">නව සම්බන්ධතා විශේෂ දීමනාව</h3>
           <p class="text-xs sm:text-sm text-amber-300 font-bold mt-1.5">Dialog TV Special Offer</p>
-          <p class="text-xs text-slate-300 mt-2 leading-relaxed max-w-[280px]">
-            Prepaid Full Set, Decoder (STB) සහ Accessories විශේෂ දීමනා Chami Multi Shop වෙතින්!
-          </p>
-          <div class="mt-4 px-3.5 py-1.5 rounded-xl bg-slate-950/80 border border-amber-500/30 text-[11px] text-amber-200">
-            <i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i> Tap image to claim on WhatsApp
-          </div>
         </div>
       </a>
     </div>
   </div>
 
-
-  <!-- ========================================================================= -->
-  <!-- 2. RUNNING DEALER TICKER BANNER (Sinhala & English + Operator Logos)      -->
-  <!-- ========================================================================= -->
+  <!-- 2. RUNNING DEALER TICKER BANNER -->
   <div class="sticky top-0 z-40 bg-gradient-to-r from-slate-950 via-[#180B1A] to-slate-950 backdrop-blur-md border-b border-amber-500/30 py-2.5 shadow-xl dealer-ticker-wrap">
     <div class="dealer-ticker-track flex items-center whitespace-nowrap text-xs sm:text-sm font-bold text-slate-200">
-      
-      <!-- Block 1 -->
       <div class="flex items-center gap-5 sm:gap-6 px-4">
         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-600/25 border border-rose-500/50 text-amber-300 font-extrabold text-xs tracking-wide">
           <i class="fa-solid fa-certificate text-rose-400 animate-spin" style="animation-duration: 8s;"></i>
           බලයලත් අලෙවි නියෝජිත
         </span>
         <span class="text-slate-600">•</span>
-        <span class="text-white font-extrabold tracking-wider uppercase text-xs sm:text-sm">
-          Authorized Dealer
-        </span>
+        <span class="text-white font-extrabold tracking-wider uppercase text-xs sm:text-sm">Authorized Dealer</span>
         <span class="text-slate-600">•</span>
-
-        <!-- Telecom Operator Brand Logos: Dialog, Mobitel, Hutch, Airtel -->
         <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-white/10 rounded-xl border border-white/20 shadow-inner">
-          <img
-            src="https://lh3.googleusercontent.com/d/1bAEy99QFJM3bAjuMLJK6Z-PnPQ3iJN8b"
-            alt="Dialog"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
-          <img
-            src="https://lh3.googleusercontent.com/d/1IeDlOE3Ti_l-pBYxz4DB3jeirDFuxPjn"
-            alt="Mobitel"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
-          <img
-            src="https://lh3.googleusercontent.com/d/1txqxjB9NSqmUmatH9l1vUX4CU30wJMNe"
-            alt="Hutch"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
-          <img
-            src="https://lh3.googleusercontent.com/d/1UElQSeZ0I23C6W0AzGXwQBcGWNteJa69"
-            alt="Airtel"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
+          <img src="https://lh3.googleusercontent.com/d/1bAEy99QFJM3bAjuMLJK6Z-PnPQ3iJN8b" alt="Dialog" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
+          <img src="https://lh3.googleusercontent.com/d/1IeDlOE3Ti_l-pBYxz4DB3jeirDFuxPjn" alt="Mobitel" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
+          <img src="https://lh3.googleusercontent.com/d/1txqxjB9NSqmUmatH9l1vUX4CU30wJMNe" alt="Hutch" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
+          <img src="https://lh3.googleusercontent.com/d/1UElQSeZ0I23C6W0AzGXwQBcGWNteJa69" alt="Airtel" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
         </div>
-
         <span class="text-slate-600">•</span>
         <span class="text-amber-400 font-extrabold flex items-center gap-1.5">
           <i class="fa-solid fa-store text-amber-300"></i> Chami Multi Shop (CMS) — Maggona
@@ -348,42 +254,20 @@
         <span class="text-slate-600">•</span>
       </div>
 
-      <!-- Block 2 (Duplicate for continuous seamless infinite loop) -->
       <div class="flex items-center gap-5 sm:gap-6 px-4" aria-hidden="true">
         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-600/25 border border-rose-500/50 text-amber-300 font-extrabold text-xs tracking-wide">
           <i class="fa-solid fa-certificate text-rose-400 animate-spin" style="animation-duration: 8s;"></i>
           බලයලත් අලෙවි නියෝජිත
         </span>
         <span class="text-slate-600">•</span>
-        <span class="text-white font-extrabold tracking-wider uppercase text-xs sm:text-sm">
-          Authorized Dealer
-        </span>
+        <span class="text-white font-extrabold tracking-wider uppercase text-xs sm:text-sm">Authorized Dealer</span>
         <span class="text-slate-600">•</span>
-
-        <!-- Telecom Operator Brand Logos: Dialog, Mobitel, Hutch, Airtel -->
         <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-white/10 rounded-xl border border-white/20 shadow-inner">
-          <img
-            src="https://lh3.googleusercontent.com/d/1bAEy99QFJM3bAjuMLJK6Z-PnPQ3iJN8b"
-            alt="Dialog"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
-          <img
-            src="https://lh3.googleusercontent.com/d/1IeDlOE3Ti_l-pBYxz4DB3jeirDFuxPjn"
-            alt="Mobitel"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
-          <img
-            src="https://lh3.googleusercontent.com/d/1txqxjB9NSqmUmatH9l1vUX4CU30wJMNe"
-            alt="Hutch"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
-          <img
-            src="https://lh3.googleusercontent.com/d/1UElQSeZ0I23C6W0AzGXwQBcGWNteJa69"
-            alt="Airtel"
-            class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm"
-          />
+          <img src="https://lh3.googleusercontent.com/d/1bAEy99QFJM3bAjuMLJK6Z-PnPQ3iJN8b" alt="Dialog" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
+          <img src="https://lh3.googleusercontent.com/d/1IeDlOE3Ti_l-pBYxz4DB3jeirDFuxPjn" alt="Mobitel" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
+          <img src="https://lh3.googleusercontent.com/d/1txqxjB9NSqmUmatH9l1vUX4CU30wJMNe" alt="Hutch" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
+          <img src="https://lh3.googleusercontent.com/d/1UElQSeZ0I23C6W0AzGXwQBcGWNteJa69" alt="Airtel" class="h-5 sm:h-6 w-auto object-contain bg-white px-1.5 py-0.5 rounded shadow-sm" />
         </div>
-
         <span class="text-slate-600">•</span>
         <span class="text-amber-400 font-extrabold flex items-center gap-1.5">
           <i class="fa-solid fa-store text-amber-300"></i> Chami Multi Shop (CMS) — Maggona
@@ -393,24 +277,6 @@
           <i class="fa-solid fa-phone-volume text-sky-400"></i> Hotlines: 0770 54 54 64 / 0710 54 54 64
         </span>
         <span class="text-slate-600">•</span>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- Toast Notification Banner -->
-  <div
-    id="toastMessage"
-    class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"
-  >
-    <div class="flex items-center gap-3 bg-slate-900 border border-amber-400/50 text-white px-4 py-3 rounded-2xl shadow-2xl">
-      <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-        <i class="fa-solid fa-check"></i>
-      </div>
-      <div>
-        <p id="toastTitle" class="text-sm font-bold text-white">Copied to Clipboard!</p>
-        <p id="toastSubtitle" class="text-xs text-slate-300">Ready to paste into WhatsApp or Facebook.</p>
       </div>
     </div>
   </div>
@@ -419,12 +285,11 @@
   <main id="flyer-canvas" class="max-w-6xl mx-auto mt-4 sm:mt-6 px-3 sm:px-6">
     <div class="rounded-3xl overflow-hidden border border-slate-800/90 bg-[#0B101D] shadow-2xl">
 
-      <!-- 1. BRAND HEADER: Chami Multi Shop -->
+      <!-- 1. BRAND HEADER -->
       <header class="relative bg-gradient-to-r from-slate-950 via-[#160B14] to-slate-950 border-b border-amber-500/20 px-5 py-5 sm:px-8 sm:py-6">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-          <!-- CMS Logo & Shop Name -->
           <div class="flex items-center gap-4 text-center md:text-left">
-            <div class="relative shrink-0 flex items-center justify-center">
+            <div class="brand-header-logo-wrap shrink-0">
               <img
                 id="cmsBrandLogo"
                 src="https://lh3.googleusercontent.com/d/1Gb-zO2Q4Lm5rGO5o1CXnUQ9XQniZ8TaO"
@@ -447,7 +312,6 @@
             </div>
           </div>
 
-          <!-- Right Side Authorized Partner Stamp -->
           <div class="flex flex-col items-center md:items-end gap-1.5">
             <div class="flex items-center gap-2.5 bg-slate-900/90 border border-rose-500/30 px-4 py-2 rounded-2xl">
               <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-rose-600 to-amber-500 flex items-center justify-center text-white font-bold shadow">
@@ -465,31 +329,22 @@
         </div>
       </header>
 
-
-      <!-- ========================================================================= -->
-      <!-- 2. DIALOG TV PREPAID PRODUCTS (Full Set, Decoder STB Only, Accessories)   -->
-      <!-- ========================================================================= -->
-      <section class="product-showcase px-4 py-7 sm:px-8 sm:py-9 border-b border-slate-800/80">
-        <div class="text-center mb-6">
-          <span class="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-sky-200">
-            <i class="fa-solid fa-satellite-dish"></i> Available at Chami Multi Shop
-          </span>
-          <h2 class="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-white">Dialog Television <span class="text-sky-300">(Prepaid)</span></h2>
-          <p class="mt-2 text-sm text-slate-300">Choose your preferred connection option and contact us on WhatsApp</p>
+      <!-- 2. DIALOG TV PREPAID PRODUCTS -->
+      <section class="product-showcase px-4 py-5 sm:px-8 sm:py-6 border-b border-slate-800/80">
+        <div class="text-center mb-4">
+          <h2 class="mt-0 font-display text-2xl sm:text-3xl font-extrabold text-white">Dialog Television <span class="text-sky-300">(Prepaid)</span></h2>
+          <p class="mt-1 text-sm text-slate-300">Choose your preferred connection option and contact us on WhatsApp</p>
         </div>
 
-        <!-- 3-Item Product Showcase Grid: Full Set, Decoder, Accessories -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-          <!-- 1. Full Set -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
           <article class="product-card rounded-3xl p-4 sm:p-5">
             <a id="fullSetImageLink" class="product-image-link" href="#" target="_blank" rel="noopener" aria-label="View Dialog TV Full Set image">
               <img id="fullSetImage" alt="Dialog Television prepaid full set" class="hidden" />
               <div id="fullSetImagePlaceholder" class="product-image-placeholder">
                 <i class="fa-solid fa-satellite-dish"></i>
                 <span class="font-bold text-sm">3:4 Product Image</span>
-                <span class="text-xs text-sky-100/70">Add Full Set image URL in settings</span>
               </div>
-              <span class="absolute left-3 top-3 rounded-full bg-sky-500/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">12 months Warranty </span>
+              <span class="absolute left-3 top-3 px-1 py-1 text-[10px] font-extrabold uppercase tracking-wider text-blue-300 drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">12 months Warranty</span>
             </a>
             <div class="pt-4">
               <p class="text-[10px] uppercase tracking-[.18em] text-sky-300 font-bold">Complete Connection</p>
@@ -505,16 +360,14 @@
             </div>
           </article>
 
-          <!-- 2. Decoder Only -->
           <article class="product-card rounded-3xl p-4 sm:p-5">
             <a id="decoderImageLink" class="product-image-link" href="#" target="_blank" rel="noopener" aria-label="View Dialog TV decoder image">
               <img id="decoderImage" alt="Dialog Television prepaid decoder STB only" class="hidden" />
               <div id="decoderImagePlaceholder" class="product-image-placeholder">
                 <i class="fa-solid fa-tv"></i>
                 <span class="font-bold text-sm">3:4 Product Image</span>
-                <span class="text-xs text-sky-100/70">Add Decoder image URL in settings</span>
               </div>
-              <span class="absolute left-3 top-3 rounded-full bg-indigo-500/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">12 Months warranty</span>
+              <span class="absolute left-3 top-3 px-1 py-1 text-[10px] font-extrabold uppercase tracking-wider text-blue-300 drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">12 months Warranty</span>
             </a>
             <div class="pt-4">
               <p class="text-[10px] uppercase tracking-[.18em] text-indigo-300 font-bold">Decoder Option</p>
@@ -530,16 +383,14 @@
             </div>
           </article>
 
-          <!-- 3. Accessories (New) -->
           <article class="product-card rounded-3xl p-4 sm:p-5">
             <a id="accessoriesImageLink" class="product-image-link" href="#" target="_blank" rel="noopener" aria-label="View Dialog TV Accessories image">
               <img id="accessoriesImage" alt="Dialog Television prepaid accessories and parts" class="hidden" />
               <div id="accessoriesImagePlaceholder" class="product-image-placeholder">
                 <i class="fa-solid fa-plug-circle-bolt"></i>
                 <span class="font-bold text-sm">3:4 Product Image</span>
-                <span class="text-xs text-sky-100/70">Add Accessories image URL in settings</span>
               </div>
-              <span class="absolute left-3 top-3 rounded-full bg-amber-500/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">06 months Warranty</span>
+              <span class="absolute left-3 top-3 px-1 py-1 text-[10px] font-extrabold uppercase tracking-wider text-blue-300 drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">6 months Warranty</span>
             </a>
             <div class="pt-4">
               <p class="text-[10px] uppercase tracking-[.18em] text-amber-300 font-bold">Original Spare Parts</p>
@@ -555,71 +406,69 @@
             </div>
           </article>
         </div>
-
-
       </section>
 
-      <!-- ========================================================================= -->
-      <!-- 3. PACKAGE HERO BANNER (Super Entry, Super Max, Sports Plus)              -->
-      <!-- ========================================================================= -->
+      <!-- 3. PACKAGE BUTTONS & STATS -->
       <section class="hero-glow relative px-5 py-6 sm:px-8 sm:py-7 border-b border-slate-800/80">
-        <!-- Package Selector Switcher Tabs -->
-        <div class="interactive-controls mb-6">
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 p-1.5 rounded-2xl bg-slate-950/85 border border-slate-800/90 w-full lg:w-fit">
-            <button
-              type="button"
-              id="tab-798"
-              onclick="selectPackage('798')"
-              class="pkg-tab flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 text-slate-300 hover:text-white hover:bg-slate-800/70"
-            >
-              <span>Super Entry</span>
-              <span class="px-2 py-0.5 rounded-md text-[11px] bg-slate-800 text-amber-300">Rs. 798</span>
-            </button>
-
-            <button
-              type="button"
-              id="tab-998"
-              onclick="selectPackage('998')"
-              class="pkg-tab flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-lg shadow-rose-950/50"
-            >
-              <span>Super Max</span>
-              <span class="px-2 py-0.5 rounded-md text-[11px] bg-black/25 text-white">Rs. 998</span>
-            </button>
-
-            <button
-              type="button"
-              id="tab-1498"
-              onclick="selectPackage('1498')"
-              class="pkg-tab flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 text-slate-300 hover:text-white hover:bg-slate-800/70"
-            >
-              <span>Sports Plus</span>
-              <span class="px-2 py-0.5 rounded-md text-[11px] bg-slate-800 text-emerald-300">Rs. 1,498</span>
-            </button>
-
-            <button
-              type="button"
-              id="tab-compare"
-              onclick="selectPackage('compare')"
-              class="pkg-tab flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 text-slate-300 hover:text-white hover:bg-slate-800/70"
-            >
-              <i class="fa-solid fa-table-columns text-xs text-amber-400"></i>
-              <span>Compare All 3</span>
-            </button>
-          </div>
-        </div>
-
         <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div class="text-center lg:text-left max-w-2xl">
-            <div id="heroBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-600/20 border border-rose-500/40 text-rose-300 text-xs font-bold uppercase tracking-wider mb-3">
-              <i class="fa-solid fa-tv"></i>
-              <span id="heroBadgeText">Best Value Family Entertainment Pack</span>
-            </div>
-            <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
-              Dialog Television — <span id="heroPkgTitle" class="bg-gradient-to-r from-amber-300 via-amber-400 to-rose-400 bg-clip-text text-transparent">Super Max Package</span>
-            </h2>
-            <p id="heroPkgDesc" class="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
-              Enjoy Sri Lanka’s favorite local channels, international blockbusters, kids’ cartoons, live sports, music, religious broadcasts, and Nenasa educational channels in one complete package.
+          <div class="interactive-controls w-full lg:w-auto">
+            <p class="text-[11px] uppercase tracking-wider text-amber-300 font-extrabold mb-2 text-center lg:text-left">
+              <i class="fa-solid fa-hand-pointer mr-1"></i> Tap a Package Button to View Channels:
             </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2.5 p-2 rounded-2xl bg-slate-950/90 border border-slate-700/90 shadow-inner">
+              <button
+                type="button"
+                id="tab-798"
+                onclick="selectPackage('798')"
+                aria-pressed="false"
+                class="pkg-tab cursor-pointer select-none border border-slate-600/80 bg-slate-800/90 hover:bg-slate-700 hover:border-amber-400 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-400 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-2.5 text-slate-100 shadow-md"
+              >
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-tv text-amber-400 text-xs"></i>
+                  <span>Super Entry</span>
+                </span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-slate-950 text-amber-300 border border-amber-400/30">Rs. 798</span>
+              </button>
+
+              <button
+                type="button"
+                id="tab-998"
+                onclick="selectPackage('998')"
+                aria-pressed="true"
+                class="pkg-tab cursor-pointer select-none border-2 border-amber-300 bg-gradient-to-r from-rose-600 to-amber-500 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-300 px-4 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center justify-between gap-2.5 text-white shadow-lg shadow-rose-950/60"
+              >
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-crown text-white text-xs"></i>
+                  <span>Super Max</span>
+                </span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-black/30 text-white border border-white/25">Rs. 998</span>
+              </button>
+
+              <button
+                type="button"
+                id="tab-1498"
+                onclick="selectPackage('1498')"
+                aria-pressed="false"
+                class="pkg-tab cursor-pointer select-none border border-slate-600/80 bg-slate-800/90 hover:bg-slate-700 hover:border-emerald-400 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-emerald-400 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-2.5 text-slate-100 shadow-md"
+              >
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-trophy text-emerald-400 text-xs"></i>
+                  <span>Sports Plus</span>
+                </span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-slate-950 text-emerald-300 border border-emerald-400/30">Rs. 1,498</span>
+              </button>
+
+              <button
+                type="button"
+                id="tab-compare"
+                onclick="selectPackage('compare')"
+                aria-pressed="false"
+                class="pkg-tab cursor-pointer select-none border border-slate-600/80 bg-slate-800/90 hover:bg-slate-700 hover:border-sky-400 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-sky-400 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 text-slate-100 shadow-md"
+              >
+                <i class="fa-solid fa-table-columns text-xs text-sky-400"></i>
+                <span>Compare All 3</span>
+              </button>
+            </div>
 
             <!-- 798 Prepaid Eligibility Notice -->
             <div id="package798Notice" class="hidden mt-4 max-w-2xl rounded-2xl border border-amber-400/50 bg-amber-500/10 px-4 py-3 text-left shadow-lg shadow-amber-950/20" role="alert" aria-live="polite">
@@ -630,7 +479,7 @@
                 <div>
                   <p class="text-xs sm:text-sm font-extrabold text-amber-300 mb-1">විශේෂ දැනුම්දීමක් – Rs. 798 පැකේජය</p>
                   <p class="text-xs sm:text-sm leading-relaxed text-amber-50">
-                    2026 මැයි 13 සිට අලුතින් මිලදී ගත් Dialog TV Prepaid සම්බන්ධතා සඳහා රු. 798 පැකේජය තෝරා ගැනීමට නොහැකිය.
+                    2026 මැයි 13 සිට අලුතින් මිලදී ගත් සහ මිලදි ගන්නා Dialog TV Prepaid සම්බන්ධතා සඳහා රු. 798 පැකේජය තෝරා ගැනීමට නොහැකිය.
                   </p>
                 </div>
               </div>
@@ -639,17 +488,15 @@
 
           <!-- Price & Channel Count Badges -->
           <div id="heroStatsGroup" class="flex flex-wrap sm:flex-nowrap items-center justify-center gap-3 sm:gap-4 shrink-0">
-            <!-- Price Pill -->
             <div class="bg-gradient-to-br from-rose-600 to-rose-800 border border-rose-400/40 rounded-2xl px-5 py-4 text-center shadow-xl shadow-rose-950/60 min-w-[165px]">
               <p class="text-[11px] uppercase tracking-widest text-rose-100 font-bold">Monthly Rental</p>
               <div class="flex items-baseline justify-center gap-1 mt-0.5">
                 <span class="text-sm font-bold text-amber-300">Rs.</span>
                 <span id="heroPriceValue" class="font-display text-3xl sm:text-4xl font-extrabold text-white">998</span>
               </div>
-              <p class="text-xs font-semibold text-rose-100/90 mt-0.5">/ 30 Days</p>
+              <p class="text-xs font-semibold text-rose-100/90 mt-0.5">30 Days</p>
             </div>
 
-            <!-- Total Channels Pill -->
             <div class="bg-slate-900/90 border border-amber-500/40 rounded-2xl px-5 py-4 text-center shadow-xl min-w-[165px]">
               <p class="text-[11px] uppercase tracking-widest text-amber-400 font-bold">Full Lineup</p>
               <div class="flex items-baseline justify-center gap-1 mt-0.5">
@@ -667,14 +514,13 @@
       <!-- 4. INTERACTIVE SEARCH & CATEGORY FILTER PILLS -->
       <section id="filterBarSection" class="interactive-controls bg-slate-900/70 border-b border-slate-800 px-4 py-4 sm:px-8">
         <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 mb-3.5">
-          <!-- Search Bar -->
           <div class="relative flex-1 max-w-md">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
             <input
               id="channelSearch"
               type="text"
               oninput="handleSearch(this.value)"
-              placeholder="Search channel name (e.g. Star Sports HD, Hiru, Cartoon Network)..."
+              placeholder="Search channel name or Ch. No (e.g. 12, Hiru, Star Sports)..."
               class="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-950 border border-slate-700/80 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
             />
             <button
@@ -688,187 +534,118 @@
             </button>
           </div>
 
-          <!-- Active Filter Status -->
           <div class="flex items-center justify-between md:justify-end gap-3 text-xs text-slate-400">
-            <span>Showing <strong id="visibleCount" class="text-amber-400">93</strong> channel entries</span>
+            <span id="visibleCountWrap">Select a category or click <strong class="text-amber-400">All Channels</strong></span>
             <button
               type="button"
               onclick="resetFilters()"
               class="text-rose-400 hover:text-rose-300 font-semibold underline underline-offset-2"
             >
-              Reset View
+              Hide / Reset
             </button>
           </div>
         </div>
 
-        <!-- Horizontal Scrollable Category Filter Pills -->
-        <div id="categoryPills" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-          <!-- Populated dynamically via JS -->
+        <div id="categoryPills" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1"></div>
+      </section>
+
+      <!-- 5. CHANNEL GRID SHOWCASE (Collapsed by default until user clicks All Channels / a category / searches) -->
+      <section id="channelsPromptState" class="p-6 sm:p-10 text-center">
+        <div class="max-w-md mx-auto rounded-2xl bg-slate-900/60 border border-slate-800/90 p-6">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-300 flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-tv text-lg"></i>
+          </div>
+          <h3 class="font-display text-base sm:text-lg font-extrabold text-white">Channel List Ready</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">
+            Tap <strong class="text-amber-300">All Channels</strong> or choose any category button above to view channels with their channel numbers.
+          </p>
+          <button
+            type="button"
+            onclick="selectCategory('all')"
+            class="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:brightness-110 text-white text-xs sm:text-sm font-extrabold shadow-lg transition cursor-pointer"
+          >
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Show All Channels</span>
+          </button>
         </div>
       </section>
 
-      <!-- 5. CHANNEL GRID SHOWCASE -->
-      <section id="channelsContainer" class="p-4 sm:p-8 space-y-6">
-        <!-- Categories and Channel Cards rendered dynamically via JS -->
-      </section>
+      <section id="channelsContainer" class="hidden p-4 sm:p-8 space-y-6"></section>
 
       <!-- 6. ALL 3 PACKAGES COMPARISON VIEW -->
       <section id="comparisonContainer" class="hidden p-4 sm:p-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          <!-- Card 1: Super Entry 798 -->
           <div class="rounded-3xl bg-slate-900/80 border border-slate-700/80 p-5 sm:p-6 flex flex-col justify-between shadow-xl">
             <div>
               <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                  Budget Starter
-                </span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">Budget Starter</span>
                 <span class="text-xs font-bold text-slate-400">30 Days</span>
               </div>
               <h3 class="font-display text-2xl font-extrabold text-white">Super Entry</h3>
               <div class="flex items-baseline gap-1 mt-2 mb-4">
                 <span class="text-base font-bold text-amber-400">Rs.</span>
                 <span class="font-display text-4xl font-extrabold text-white">798</span>
-                <span class="text-xs font-semibold text-emerald-400 ml-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30">
-                  81 Channels
-                </span>
+                <span class="text-xs font-semibold text-emerald-400 ml-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30">81 Channels</span>
               </div>
-              <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                Ideal everyday family starter with all 21 Sri Lankan local channels, Nenasa educational channels, kids, news, religious &amp; selected foreign entertainment.
-              </p>
               <ul class="space-y-2.5 text-xs text-slate-200 border-t border-slate-800 pt-4">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                  <span><strong>All 21 Local Channels</strong> (Hiru, Derana, Sirasa, Swarnavahini, ITN, Rupavahini &amp; more)</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                  <span><strong>All 5 Nenasa Educational Channels</strong> (Grades 1–5, 6–9, O/L)</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                  <span><strong>Kids &amp; Edutainment:</strong> Cartoon Network, Nick, Pogo, Discovery, Nat Geo, Animal Planet</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                  <span><strong>News, Music &amp; Religious:</strong> BBC, CNN, Al Jazeera, Buddhist TV, Shraddha TV, EWTN</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                  <span><strong>Sports:</strong> Eurosport included</span>
-                </li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i><span><strong>All 21 Local Channels</strong></span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i><span><strong>All 5 Nenasa Educational Channels</strong></span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i><span><strong>Kids &amp; Edutainment:</strong> Cartoon Network, Nick, Pogo, Discovery, Nat Geo, Animal Planet</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i><span><strong>News, Music &amp; Religious:</strong> BBC, CNN, Al Jazeera, Buddhist TV, Shraddha TV, EWTN</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i><span><strong>Sports:</strong> Eurosport included</span></li>
               </ul>
             </div>
-
-            <button
-              type="button"
-              onclick="selectPackage('798')"
-              class="mt-6 w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-xs font-bold transition"
-            >
+            <button type="button" onclick="selectPackage('798', true)" class="mt-6 w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-xs font-bold transition cursor-pointer">
               View All 81 Channels <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
           </div>
 
-          <!-- Card 2: Super Max 998 (Most Popular) -->
           <div class="relative rounded-3xl bg-gradient-to-b from-[#1D101B] to-slate-900 border-2 border-rose-500/70 p-5 sm:p-6 flex flex-col justify-between shadow-2xl shadow-rose-950/40">
-            <div class="absolute -top-3.5 right-5 px-3 py-1 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white text-[11px] font-extrabold uppercase tracking-wider shadow">
-              Most Popular
-            </div>
+            <div class="absolute -top-3.5 right-5 px-3 py-1 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white text-[11px] font-extrabold uppercase tracking-wider shadow">Most Popular</div>
             <div>
               <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">
-                  Best Value Family Pack
-                </span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">Best Value Family Pack</span>
                 <span class="text-xs font-bold text-slate-400">30 Days</span>
               </div>
               <h3 class="font-display text-2xl font-extrabold text-white">Super Max</h3>
               <div class="flex items-baseline gap-1 mt-2 mb-4">
                 <span class="text-base font-bold text-amber-400">Rs.</span>
                 <span class="font-display text-4xl font-extrabold text-white">998</span>
-                <span class="text-xs font-semibold text-emerald-400 ml-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30">
-                  93 Channels
-                </span>
+                <span class="text-xs font-semibold text-emerald-400 ml-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30">93 Channels</span>
               </div>
-              <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                Everything in Super Entry (81 channels) <strong>plus 12 extra entertainment, movie &amp; sports channels</strong> for the whole household.
-              </p>
               <ul class="space-y-2.5 text-xs text-slate-200 border-t border-slate-800 pt-4">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i>
-                  <span><strong>All 81 Channels from Super Entry</strong> included</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i>
-                  <span><strong>Hollywood Movies:</strong> &amp;flix &amp; HITS MOVIES</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i>
-                  <span><strong>Extra English &amp; Hindi:</strong> Warner TV, HITS NOW, Fashion TV, Star Plus, Zee Cinema, SET Max</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i>
-                  <span><strong>Extra Tamil Entertainment:</strong> Star Vijay, Colors Tamil, Kalaignar TV</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i>
-                  <span><strong>Extra Sports:</strong> Sony Sports Ten 1 + Eurosport</span>
-                </li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-amber-400 mt-0.5"></i><span><strong>All 81 Channels from Super Entry</strong> included</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i><span><strong>Hollywood Movies:</strong> &amp;flix &amp; HITS MOVIES</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i><span><strong>Extra English &amp; Hindi:</strong> Warner TV, HITS NOW, Fashion TV, Star Plus, Zee Cinema, SET Max</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i><span><strong>Extra Tamil Entertainment:</strong> Star Vijay, Colors Tamil, Kalaignar TV</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-plus-circle text-rose-400 mt-0.5"></i><span><strong>Extra Sports:</strong> Sony Sports Ten 1 + Eurosport</span></li>
               </ul>
             </div>
-
-            <button
-              type="button"
-              onclick="selectPackage('998')"
-              class="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white text-xs font-extrabold shadow-lg transition"
-            >
+            <button type="button" onclick="selectPackage('998', true)" class="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-rose-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white text-xs font-extrabold shadow-lg transition cursor-pointer">
               View All 93 Channels <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
           </div>
 
-          <!-- Card 3: Sports Plus 1,498 -->
           <div class="rounded-3xl bg-slate-900/80 border border-emerald-500/40 p-5 sm:p-6 flex flex-col justify-between shadow-xl">
             <div>
               <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                  Ultimate HD Sports
-                </span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Ultimate HD Sports</span>
                 <span class="text-xs font-bold text-slate-400">30 Days</span>
               </div>
               <h3 class="font-display text-2xl font-extrabold text-white">Sports Plus</h3>
               <div class="flex items-baseline gap-1 mt-2 mb-4">
                 <span class="text-base font-bold text-amber-400">Rs.</span>
                 <span class="font-display text-4xl font-extrabold text-white">1,498</span>
-                <span class="text-xs font-semibold text-emerald-400 ml-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30">
-                  105 Channels
-                </span>
+                <span class="text-xs font-semibold text-emerald-400 ml-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30">105 Channels</span>
               </div>
-              <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                The complete entertainment + live cricket, football &amp; international sports powerhouse with <strong>HD Sports channels</strong> included.
-              </p>
               <ul class="space-y-2.5 text-xs text-slate-200 border-t border-slate-800 pt-4">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                  <span><strong>All 93 Channels from Super Max</strong> included</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5"></i>
-                  <span><strong>Star Sports Pack:</strong> Star Sports 1, Star Sports 2, Star Sports 1 HD, Star Sports Select 1 HD, Star Sports Select 2 HD</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-trophy text-amber-400 mt-0.5"></i>
-                  <span><strong>Sony &amp; Premier Sports:</strong> Sony Sports 2 HD, Sony Sports 5 HD, Premier Sports</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-plus-circle text-emerald-400 mt-0.5"></i>
-                  <span><strong>4 Bonus Entertainment Channels:</strong> AXN HD, ROCK Entertainment HD, Colors Cineplex, MTV 90s</span>
-                </li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i><span><strong>All 93 Channels from Super Max</strong> included</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-trophy text-amber-400 mt-0.5"></i><span><strong>Star Sports Pack:</strong> Star Sports 1, Star Sports 2, Star Sports 1 HD, Star Sports Select 1 HD, Star Sports Select 2 HD</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-trophy text-amber-400 mt-0.5"></i><span><strong>Sony &amp; Premier Sports:</strong> Sony Sports 2 HD, Sony Sports 5 HD, Premier Sports</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-plus-circle text-emerald-400 mt-0.5"></i><span><strong>4 Bonus Entertainment Channels:</strong> AXN HD, ROCK Entertainment HD, Colors Cineplex, MTV 90s</span></li>
               </ul>
             </div>
-
-            <button
-              type="button"
-              onclick="selectPackage('1498')"
-              class="mt-6 w-full py-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition"
-            >
+            <button type="button" onclick="selectPackage('1498', true)" class="mt-6 w-full py-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition cursor-pointer">
               View All 105 Channels <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
           </div>
@@ -881,51 +658,45 @@
           <i class="fa-solid fa-tv text-xl"></i>
         </div>
         <h3 class="font-display text-lg font-bold text-white">No matching channels found</h3>
-        <p class="text-xs text-slate-400 mt-1 max-w-md mx-auto">
-          Try searching with a different keyword or switch back to "All Channels" to view the full lineup.
-        </p>
-        <button
-          type="button"
-          onclick="resetFilters()"
-          class="mt-4 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition"
-        >
+        <button type="button" onclick="selectCategory('all')" class="mt-4 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition cursor-pointer">
           Show All Channels
         </button>
       </div>
 
-      <!-- Hidden File Input for Custom Channel Logo Upload -->
-      <input
-        id="logoUploadInput"
-        type="file"
-        accept="image/*"
-        class="hidden"
-        onchange="handleLogoFileSelected(event)"
-      />
+      <input id="logoUploadInput" type="file" accept="image/*" class="hidden" onchange="handleLogoFileSelected(event)" />
 
-      <!-- 7. SHOP CONTACT & PROMO FOOTER -->
+      <!-- 7. SHOP CONTACT FOOTER -->
       <footer class="bg-gradient-to-r from-slate-950 via-[#150A13] to-slate-950 border-t border-amber-500/25 px-5 py-6 sm:px-8">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-5">
-          <!-- Call & WhatsApp Action Pills -->
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            <div class="flex items-center gap-3 bg-slate-900/90 border border-rose-500/35 px-4 py-2.5 rounded-2xl">
+            <div class="flex flex-wrap items-center gap-2 bg-slate-900/95 border border-rose-500/40 px-3.5 py-2.5 rounded-2xl shadow-md">
               <div class="w-9 h-9 rounded-xl bg-rose-600/20 text-rose-400 flex items-center justify-center shrink-0">
                 <i class="fa-solid fa-phone-volume"></i>
               </div>
               <div>
                 <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Hotlines / Connections</p>
-                <p class="text-xs sm:text-sm font-extrabold text-white tracking-wide">0770 54 54 64 / 0710 54 54 64</p>
+                <div class="flex items-center gap-1.5 mt-0.5">
+                  <a href="tel:+94770545464" class="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-extrabold transition shadow cursor-pointer">0770 54 54 64</a>
+                  <span class="text-slate-500 text-xs font-bold">/</span>
+                  <a href="tel:+94710545464" class="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-extrabold transition shadow cursor-pointer">0710 54 54 64</a>
+                </div>
               </div>
             </div>
 
-            <div class="flex items-center gap-3 bg-slate-900/90 border border-emerald-500/35 px-4 py-2.5 rounded-2xl">
-              <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <a
+              href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20need%20Dialog%20TV%20reload%20%2F%20support."
+              target="_blank"
+              rel="noopener"
+              class="flex items-center gap-3 bg-emerald-600/20 hover:bg-emerald-600/35 border border-emerald-400/50 px-4 py-2.5 rounded-2xl shadow-md transition hover:-translate-y-0.5 cursor-pointer"
+            >
+              <div class="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 shadow">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
               </div>
               <div>
-                <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">WhatsApp Reloads &amp; Support</p>
-                <p class="text-xs sm:text-sm font-extrabold text-emerald-300 tracking-wide">070 1193383</p>
+                <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-bold">WhatsApp Reloads &amp; Support</p>
+                <p class="text-xs sm:text-sm font-extrabold text-white tracking-wide">070 1193383 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1 text-emerald-300"></i></p>
               </div>
-            </div>
+            </a>
 
             <div class="flex items-center gap-3 bg-slate-900/90 border border-amber-500/35 px-4 py-2.5 rounded-2xl">
               <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
@@ -945,7 +716,6 @@
           </div>
         </div>
 
-        <!-- Bottom Copyright & Tagline Strip -->
         <div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
           <p>
             <strong class="text-white">Chami Multi Shop</strong> — <span class="text-amber-400 font-semibold">Qualityය හොයන අයට</span> | Beyond the Page, Beyond the Connection
@@ -953,55 +723,34 @@
           <p id="footerPkgLabel" class="text-slate-500">Dialog Television Super Max (Rs. 998) Package Guide</p>
         </div>
       </footer>
-
     </div>
   </main>
 
-  <!-- Sticky WhatsApp Floating Contact Pill -->
   <a class="whatsapp-float" href="https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20need%20information%20about%20Dialog%20Television." target="_blank" rel="noopener" aria-label="Chat with Chami Multi Shop on WhatsApp">
     <i class="fa-brands fa-whatsapp text-xl"></i><span class="wa-label">Chat on WhatsApp</span>
   </a>
 
-  <!-- ========================================================================= -->
-  <!-- JAVASCRIPT LOGIC & PRODUCT CONFIGURATION                                  -->
-  <!-- ========================================================================= -->
   <script>
-    /**
-     * 1. WELCOME OFFER POPUP CONFIGURATION
-     * Set 'imageUrl' to your offer image path (e.g. "assets/offer.jpg" or direct URL).
-     * Set 'enabled' to false if you wish to temporarily disable the popup.
-     */
     const CMS_OFFER_POPUP = {
       enabled: true,
-      imageUrl: "https://lh3.googleusercontent.com/d/1oewVv4jwoXTmUnlWpJHJbBDAgSlQbtwj", // <-- Add your offer image link here!
+      imageUrl: "https://lh3.googleusercontent.com/d/1oewVv4jwoXTmUnlWpJHJbBDAgSlQbtwj",
       imageLink: "https://wa.me/94701193383?text=Hello%20Chami%20Multi%20Shop%2C%20I%20am%20interested%20in%20the%20Dialog%20TV%20Special%20Offer."
     };
 
     function initOfferModal() {
       const modal = document.getElementById('offerModal');
       if (!modal || !CMS_OFFER_POPUP.enabled) return;
-
       const img = document.getElementById('offerPopupImage');
       const placeholder = document.getElementById('offerImagePlaceholder');
       const link = document.getElementById('offerImageLink');
-
-      if (link && CMS_OFFER_POPUP.imageLink) {
-        link.href = CMS_OFFER_POPUP.imageLink;
-      }
-
+      if (link && CMS_OFFER_POPUP.imageLink) link.href = CMS_OFFER_POPUP.imageLink;
       if (img && CMS_OFFER_POPUP.imageUrl) {
         img.src = CMS_OFFER_POPUP.imageUrl;
         img.onload = () => {
           img.classList.remove('hidden');
           if (placeholder) placeholder.classList.add('hidden');
         };
-        img.onerror = () => {
-          img.classList.add('hidden');
-          if (placeholder) placeholder.classList.remove('hidden');
-        };
       }
-
-      // Display the modal immediately on page load
       modal.classList.remove('modal-hidden');
       document.body.classList.add('overflow-hidden');
     }
@@ -1013,16 +762,10 @@
       document.body.classList.remove('overflow-hidden');
     }
 
-    // Dismiss modal on pressing Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeOfferModal();
     });
 
-    /**
-     * 2. PRODUCT SETTINGS — Full Set, Decoder, and Accessories
-     * Update image URLs, links and prices here.
-     * Recommended aspect ratio: 3:4.
-     */
     const CMS_DIALOG_PRODUCTS = {
       fullSet: {
         imageUrl: "https://lh3.googleusercontent.com/d/1XPNwSGuXzaAA7ZivnAE4s2k1-i4C5j6D",
@@ -1044,144 +787,29 @@
     function setupProductCard(key) {
       const item = CMS_DIALOG_PRODUCTS[key];
       if (!item) return;
-      const prefix = key; // "fullSet", "decoder", or "accessories"
-      const image = document.getElementById(prefix + "Image");
-      const imageLink = document.getElementById(prefix + "ImageLink");
-      const placeholder = document.getElementById(prefix + "ImagePlaceholder");
-      const price = document.getElementById(prefix + "Price");
-
+      const image = document.getElementById(key + "Image");
+      const imageLink = document.getElementById(key + "ImageLink");
+      const placeholder = document.getElementById(key + "ImagePlaceholder");
+      const price = document.getElementById(key + "Price");
       if (price) price.textContent = item.price || "Contact for Price";
-      if (imageLink && item.imageLink) {
-        imageLink.href = item.imageLink;
-      } else if (imageLink) {
-        imageLink.href = "#";
-        imageLink.addEventListener("click", event => event.preventDefault());
-      }
-
+      if (imageLink && item.imageLink) imageLink.href = item.imageLink;
       if (image && item.imageUrl) {
         image.src = item.imageUrl;
         image.classList.remove("hidden");
         if (placeholder) placeholder.classList.add("hidden");
-        image.onerror = () => {
-          image.classList.add("hidden");
-          if (placeholder) placeholder.classList.remove("hidden");
-        };
       }
     }
 
-    /**
-     * Removes outer white background around the brand logo image using HTML5 Canvas
-     * so it blends cleanly onto dark/colored headers without any white box.
-     */
-    function makeLogoOuterBackgroundTransparent(imgElement, tolerance = 240) {
-      if (!imgElement) return;
+    // Add Google Drive links ('https://lh3.googleusercontent.com/d/FILE_ID') or local paths ('logos/name.png') here.
+    const dialogPrepaidLogoUrls = {};
 
-      const processImage = () => {
-        try {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          const w = imgElement.naturalWidth;
-          const h = imgElement.naturalHeight;
-
-          if (!w || !h) return;
-
-          canvas.width = w;
-          canvas.height = h;
-          ctx.drawImage(imgElement, 0, 0);
-
-          const imageData = ctx.getImageData(0, 0, w, h);
-          const data = imageData.data;
-          const visited = new Uint8Array(w * h);
-
-          const isNearWhite = (idx) => {
-            const r = data[idx];
-            const g = data[idx + 1];
-            const b = data[idx + 2];
-            const a = data[idx + 3];
-            return a === 0 || (r >= tolerance && g >= tolerance && b >= tolerance);
-          };
-
-          const stack = [];
-          for (let x = 0; x < w; x++) {
-            stack.push([x, 0], [x, h - 1]);
-          }
-          for (let y = 0; y < h; y++) {
-            stack.push([0, y], [w - 1, y]);
-          }
-
-          while (stack.length > 0) {
-            const [x, y] = stack.pop();
-            if (x < 0 || x >= w || y < 0 || y >= h) continue;
-
-            const pos = y * w + x;
-            if (visited[pos]) continue;
-            visited[pos] = 1;
-
-            const idx = pos * 4;
-            if (isNearWhite(idx)) {
-              data[idx + 3] = 0;
-              stack.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
-            }
-          }
-
-          ctx.putImageData(imageData, 0, 0);
-          imgElement.src = canvas.toDataURL('image/png');
-        } catch (err) {
-          // Fallback if opened via file:// with strict canvas tainting
-        }
-      };
-
-      if (imgElement.complete && imgElement.naturalWidth > 0) {
-        processImage();
-      } else {
-        imgElement.addEventListener('load', processImage, { once: true });
-      }
-    }
-
-    /**
-     * Package metadata configuration for Super Entry (798), Super Max (998), Sports Plus (1498), and Compare All 3.
-     */
     const packageMeta = {
-      '798': {
-        name: 'Super Entry',
-        title: 'Super Entry Package',
-        price: '798',
-        count: 81,
-        badge: 'Smart Everyday Family Starter',
-        desc: 'All 21 Sri Lankan local channels, all 5 Nenasa educational channels, kids’ favorites, international news, religious broadcasts, and selected Hindi, Tamil & English entertainment.'
-      },
-      '998': {
-        name: 'Super Max',
-        title: 'Super Max Package',
-        price: '998',
-        count: 93,
-        badge: 'Best Value Family Entertainment Pack',
-        desc: 'Enjoy Sri Lanka’s favorite local channels, international blockbusters, kids’ cartoons, live sports, music, religious broadcasts, and Nenasa educational channels in one complete package.'
-      },
-      '1498': {
-        name: 'Sports Plus',
-        title: 'Sports Plus Package',
-        price: '1,498',
-        count: 105,
-        badge: 'Ultimate Live Sports & HD Entertainment Pack',
-        desc: 'Includes all 93 Super Max channels PLUS 8 dedicated live sports channels (Star Sports 1/2/1 HD, Select 1/2 HD, Sony Sports 2/5 HD, Premier Sports) and bonus HD entertainment.'
-      },
-      'compare': {
-        name: 'All 3 Prepaid Plans',
-        title: 'Prepaid Packages Comparison',
-        price: '798 – 1,498',
-        count: '81 – 105',
-        badge: 'Official Dialog Television 30-Day Prepaid Lineup',
-        desc: 'Compare Super Entry (Rs. 798), Super Max (Rs. 998), and Sports Plus (Rs. 1,498) side-by-side to choose the ideal 30-day entertainment and live sports plan for your home.'
-      }
+      '798': { name: 'Super Entry', price: '798', count: 81 },
+      '998': { name: 'Super Max', price: '998', count: 93 },
+      '1498': { name: 'Sports Plus', price: '1,498', count: 105 },
+      'compare': { name: 'All 3 Prepaid Plans', price: '798 – 1,498', count: '81 – 105' }
     };
 
-    /**
-     * Master channel dataset across all 12 categories:
-     * - Base channels (no tier tag) are included in 798 (81 channels), 998 (93 channels), and 1498 (105 channels).
-     * - tier: '998' denotes the 12 additional channels unlocked in Super Max (998) & Sports Plus (1498).
-     * - tier: '1498' denotes the 12 additional channels unlocked in Sports Plus (1498), including the 8 verified official sports channels.
-     */
     const masterChannelCategories = [
       {
         id: 'local',
@@ -1190,176 +818,27 @@
         accent: 'from-rose-500 to-amber-500',
         badgeBg: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
         channels: [
-          { name: 'Nethra', code: 'NET', bg: 'from-amber-600 to-red-700', shape: 'ring' },
-          { name: 'TV Supreme', code: 'SUP', bg: 'from-purple-600 to-indigo-800', shape: 'crown' },
-          { name: 'Hi TV', code: 'Hi', bg: 'from-rose-600 to-red-800', shape: 'spark' },
-          { name: 'Rangiri Sri Lanka', code: 'RSL', bg: 'from-amber-500 to-orange-700', shape: 'lotus' },
-          { name: 'Citi Hitz', code: 'CH', bg: 'from-sky-600 to-blue-800', shape: 'pulse' },
-          { name: 'Ridee TV', code: 'RID', bg: 'from-slate-500 to-slate-800', shape: 'film' },
-          { name: 'TV Didula', code: 'DID', bg: 'from-blue-500 to-cyan-700', shape: 'spark' },
-          { name: 'Shardha TV', code: 'SHR', bg: 'from-emerald-600 to-teal-800', shape: 'lotus' },
-          { name: 'Siyatha TV', code: 'SIY', bg: 'from-indigo-600 to-blue-900', shape: 'ring' },
-          { name: 'AdaDerana 24X7', code: '24X7', bg: 'from-red-600 to-rose-900', shape: 'globe' },
-          { name: 'ART Television', code: 'ART', bg: 'from-red-700 to-slate-900', shape: 'ring' },
-          { name: 'Hiru TV', code: 'HIRU', bg: 'from-amber-400 to-orange-600', shape: 'sun', darkText: true },
-          { name: 'TV1', code: 'TV1', bg: 'from-fuchsia-600 to-purple-800', shape: 'spark' },
-          { name: 'Shakthi TV', code: 'SHK', bg: 'from-yellow-500 to-amber-700', shape: 'sun', darkText: true },
-          { name: 'Sirasa TV', code: 'SIR', bg: 'from-red-600 to-red-800', shape: 'crown' },
-          { name: 'Swarnavahini', code: 'SWN', bg: 'from-amber-500 to-yellow-700', shape: 'sun', darkText: true },
-          { name: 'TV Derana', code: 'DER', bg: 'from-rose-600 to-slate-900', shape: 'spark' },
-          { name: 'Vasantham TV', code: 'VAS', bg: 'from-pink-600 to-rose-800', shape: 'lotus' },
-          { name: 'ITN', code: 'ITN', bg: 'from-red-600 to-amber-700', shape: 'ring' },
-          { name: 'Rupavahini', code: 'RUP', bg: 'from-red-700 to-rose-950', shape: 'lotus' },
-          { name: 'Channel Eye', code: 'EYE', bg: 'from-cyan-600 to-slate-800', shape: 'ring' }
-        ]
-      },
-      {
-        id: 'english',
-        name: 'English Entertainment',
-        icon: 'fa-film',
-        accent: 'from-sky-500 to-indigo-500',
-        badgeBg: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
-        channels: [
-          { name: 'HITS', code: 'HITS', bg: 'from-amber-500 to-red-600', shape: 'star' },
-          { name: 'Comedy Zone', code: 'CZ', bg: 'from-yellow-400 to-orange-500', shape: 'spark', darkText: true },
-          { name: 'Disney International', code: 'DSNY', bg: 'from-blue-600 to-indigo-800', shape: 'star' },
-          { name: 'Zee Café', code: 'ZEE', bg: 'from-teal-500 to-emerald-700', shape: 'ring' },
-          { name: 'HITS NOW', code: 'NOW', bg: 'from-sky-500 to-blue-700', shape: 'pulse', tier: '998' },
-          { name: 'Fashion TV', code: 'FTV', bg: 'from-slate-700 to-black', shape: 'diamond', tier: '998' },
-          { name: 'Warner TV', code: 'WTV', bg: 'from-blue-700 to-slate-900', shape: 'shield', tier: '998' },
-          { name: 'AXN HD', code: 'AXN', bg: 'from-red-600 to-slate-900', shape: 'pulse', tier: '1498' },
-          { name: 'ROCK Entertainment HD', code: 'ROCK', bg: 'from-indigo-600 to-purple-900', shape: 'star', tier: '1498' }
-        ]
-      },
-      {
-        id: 'tamil',
-        name: 'Tamil Entertainment',
-        icon: 'fa-masks-theater',
-        accent: 'from-orange-500 to-rose-600',
-        badgeBg: 'bg-orange-500/15 text-orange-300 border-orange-500/30',
-        channels: [
-          { name: 'Jaya Max', code: 'JMAX', bg: 'from-amber-500 to-red-600', shape: 'pulse' },
-          { name: 'Zee Tamil', code: 'ZT', bg: 'from-orange-500 to-amber-600', shape: 'ring' },
-          { name: 'Jaya TV', code: 'JAYA', bg: 'from-emerald-600 to-amber-600', shape: 'sun' },
-          { name: 'Sirippoli TV', code: 'SRP', bg: 'from-red-600 to-orange-600', shape: 'spark' },
-          { name: 'Kalaignar TV', code: 'KTV', bg: 'from-red-600 to-yellow-600', shape: 'sun', tier: '998' },
-          { name: 'Star Vijay', code: 'VIJ', bg: 'from-orange-600 to-rose-700', shape: 'star', tier: '998' },
-          { name: 'Colors Tamil', code: 'CT', bg: 'from-fuchsia-600 to-pink-700', shape: 'ring', tier: '998' }
-        ]
-      },
-      {
-        id: 'hindi',
-        name: 'Hindi Entertainment',
-        icon: 'fa-clapperboard',
-        accent: 'from-amber-500 to-pink-600',
-        badgeBg: 'bg-pink-500/15 text-pink-300 border-pink-500/30',
-        channels: [
-          { name: 'Star Bharat', code: 'SB', bg: 'from-blue-600 to-red-600', shape: 'star' },
-          { name: 'Star Gold Romance', code: 'SGR', bg: 'from-rose-500 to-pink-700', shape: 'star' },
-          { name: 'B4U Movies', code: 'B4U', bg: 'from-indigo-600 to-purple-800', shape: 'film' },
-          { name: 'Colors', code: 'COL', bg: 'from-rose-500 to-amber-500', shape: 'ring' },
-          { name: 'Star Gold', code: 'SG', bg: 'from-amber-500 to-red-700', shape: 'star' },
-          { name: 'Sony Set', code: 'SET', bg: 'from-amber-500 to-orange-800', shape: 'shield' },
-          { name: 'Colors / Sab', code: 'SAB', bg: 'from-yellow-500 to-orange-600', shape: 'spark', darkText: true },
-          { name: 'Zee Cinema', code: 'ZC', bg: 'from-teal-500 to-cyan-700', shape: 'film', tier: '998' },
-          { name: 'Star Plus', code: 'S+', bg: 'from-red-600 to-rose-700', shape: 'star', tier: '998' },
-          { name: 'SET Max', code: 'MAX', bg: 'from-amber-400 to-slate-900', shape: 'film', tier: '998' },
-          { name: 'Colors Cineplex', code: 'CCPX', bg: 'from-amber-500 to-rose-700', shape: 'film', tier: '1498' }
-        ]
-      },
-      {
-        id: 'kids',
-        name: 'Kids',
-        icon: 'fa-child-reaching',
-        accent: 'from-yellow-400 to-emerald-500',
-        badgeBg: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',
-        channels: [
-          { name: 'Nick Jr.', code: 'NJr', bg: 'from-orange-500 to-sky-500', shape: 'spark' },
-          { name: 'Pogo', code: 'POGO', bg: 'from-yellow-400 to-rose-500', shape: 'star', darkText: true },
-          { name: 'Nick', code: 'NICK', bg: 'from-orange-500 to-amber-600', shape: 'spark' },
-          { name: 'Disney Jr.', code: 'DJr', bg: 'from-red-500 to-amber-500', shape: 'star' },
-          { name: 'Baby TV', code: 'BABY', bg: 'from-amber-400 to-pink-500', shape: 'lotus', darkText: true },
-          { name: 'Nickelodeon', code: 'NCK', bg: 'from-orange-600 to-orange-800', shape: 'spark' },
-          { name: 'A Plus TV', code: 'A+', bg: 'from-sky-500 to-indigo-600', shape: 'star' },
-          { name: 'Cartoon Network', code: 'CN', bg: 'from-slate-800 to-black', shape: 'shield' },
-          { name: 'Cbeebies', code: 'CB', bg: 'from-lime-500 to-emerald-600', shape: 'spark', darkText: true },
-          { name: 'Da Vinci', code: 'DV', bg: 'from-red-600 to-amber-600', shape: 'ring' }
-        ]
-      },
-      {
-        id: 'sports',
-        name: 'Sports',
-        icon: 'fa-trophy',
-        accent: 'from-emerald-500 to-cyan-500',
-        badgeBg: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
-        channels: [
-          { name: 'Eurosport', code: 'EURO', bg: 'from-blue-700 to-rose-600', shape: 'star' },
-          { name: 'Sony Sports Ten 1', code: 'TEN1', bg: 'from-indigo-600 to-purple-800', shape: 'shield', tier: '998' },
-          { name: 'Star Sports 1', code: 'SS1', bg: 'from-sky-500 to-blue-800', shape: 'star', tier: '1498' },
-          { name: 'Star Sports 2', code: 'SS2', bg: 'from-blue-600 to-indigo-900', shape: 'star', tier: '1498' },
-          { name: 'Star Sports 1 HD', code: 'SS1 HD', bg: 'from-amber-500 to-blue-800', shape: 'star', tier: '1498' },
-          { name: 'Star Sports Select 1 HD', code: 'SEL 1', bg: 'from-cyan-500 to-blue-900', shape: 'shield', tier: '1498' },
-          { name: 'Star Sports Select 2 HD', code: 'SEL 2', bg: 'from-teal-500 to-indigo-900', shape: 'shield', tier: '1498' },
-          { name: 'Sony Sports 2 HD', code: 'SS2 HD', bg: 'from-purple-600 to-indigo-950', shape: 'shield', tier: '1498' },
-          { name: 'Sony Sports 5 HD', code: 'SS5 HD', bg: 'from-rose-600 to-indigo-950', shape: 'shield', tier: '1498' },
-          { name: 'Premier Sports', code: 'PREM', bg: 'from-emerald-500 to-teal-900', shape: 'star', tier: '1498' }
-        ]
-      },
-      {
-        id: 'movies',
-        name: 'Movies',
-        icon: 'fa-ticket',
-        accent: 'from-purple-500 to-rose-500',
-        badgeBg: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
-        channels: [
-          { name: '&flix', code: '&FLX', bg: 'from-slate-700 to-zinc-900', shape: 'film', tier: '998' },
-          { name: 'HITS MOVIES', code: 'HMOV', bg: 'from-amber-600 to-rose-800', shape: 'film', tier: '998' }
-        ]
-      },
-      {
-        id: 'educational',
-        name: 'Educational',
-        icon: 'fa-graduation-cap',
-        accent: 'from-rose-600 to-red-800',
-        badgeBg: 'bg-red-500/15 text-red-300 border-red-500/30',
-        channels: [
-          { name: 'Nenasa Sinhala Grade 6–9', code: 'NS 6-9', bg: 'from-rose-700 to-red-950', shape: 'book' },
-          { name: 'Nenasa Tamil Grade 6–9', code: 'NT 6-9', bg: 'from-red-700 to-slate-900', shape: 'book' },
-          { name: 'Nenasa Sinhala Grade 1–5', code: 'NS 1-5', bg: 'from-rose-600 to-red-900', shape: 'book' },
-          { name: 'Nenasa Tamil O/L', code: 'NT O/L', bg: 'from-amber-700 to-red-950', shape: 'book' },
-          { name: 'Nenasa Sinhala O/L', code: 'NS O/L', bg: 'from-rose-800 to-black', shape: 'book' }
-        ]
-      },
-      {
-        id: 'news',
-        name: 'News',
-        icon: 'fa-newspaper',
-        accent: 'from-red-500 to-blue-600',
-        badgeBg: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
-        channels: [
-          { name: 'Jaya Plus', code: 'J+', bg: 'from-amber-500 to-red-700', shape: 'globe' },
-          { name: 'EuroNews', code: 'EUR', bg: 'from-sky-600 to-blue-900', shape: 'globe' },
-          { name: 'France 24', code: 'F24', bg: 'from-blue-600 to-sky-800', shape: 'globe' },
-          { name: 'NDTV', code: 'NDTV', bg: 'from-slate-700 to-red-800', shape: 'globe' },
-          { name: 'CNN', code: 'CNN', bg: 'from-red-600 to-red-800', shape: 'pulse' },
-          { name: 'CGTN', code: 'CGTN', bg: 'from-blue-700 to-indigo-950', shape: 'globe' },
-          { name: 'BBC World', code: 'BBC', bg: 'from-red-700 to-rose-950', shape: 'globe' },
-          { name: 'ABC Australia', code: 'ABC', bg: 'from-slate-700 to-slate-950', shape: 'ring' },
-          { name: 'Al Jazeera', code: 'AJE', bg: 'from-amber-500 to-yellow-700', shape: 'lotus', darkText: true }
-        ]
-      },
-      {
-        id: 'music',
-        name: 'Music',
-        icon: 'fa-music',
-        accent: 'from-fuchsia-500 to-cyan-500',
-        badgeBg: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30',
-        channels: [
-          { name: 'Jaya Max', code: 'JMAX', bg: 'from-amber-500 to-orange-700', shape: 'pulse' },
-          { name: 'B4U Music', code: 'B4UM', bg: 'from-rose-600 to-indigo-800', shape: 'pulse' },
-          { name: 'Zing TV', code: 'ZING', bg: 'from-pink-600 to-rose-800', shape: 'pulse' },
-          { name: 'Channel C', code: 'CH-C', bg: 'from-cyan-500 to-blue-700', shape: 'pulse' },
-          { name: 'MTV 90s', code: 'MTV', bg: 'from-yellow-400 to-pink-600', shape: 'pulse', darkText: true, tier: '1498' }
+          { chNo: 1, name: 'Channel Eye', code: 'EYE', bg: 'from-cyan-600 to-slate-800' },
+          { chNo: 2, name: 'Rupavahini', code: 'RUP', bg: 'from-red-700 to-rose-950' },
+          { chNo: 3, name: 'Nethra', code: 'NET', bg: 'from-amber-600 to-red-700' },
+          { chNo: 4, name: 'ITN', code: 'ITN', bg: 'from-red-600 to-amber-700' },
+          { chNo: 5, name: 'Vasantham TV', code: 'VAS', bg: 'from-pink-600 to-rose-800' },
+          { chNo: 6, name: 'TV Derana', code: 'DER', bg: 'from-rose-600 to-slate-900' },
+          { chNo: 7, name: 'Swarnavahini', code: 'SWN', bg: 'from-amber-500 to-yellow-700', darkText: true },
+          { chNo: 8, name: 'Sirasa TV', code: 'SIR', bg: 'from-red-600 to-red-800' },
+          { chNo: 9, name: 'Shakthi TV', code: 'SHK', bg: 'from-yellow-500 to-amber-700', darkText: true },
+          { chNo: 10, name: 'TV1', code: 'TV1', bg: 'from-fuchsia-600 to-purple-800' },
+          { chNo: 11, name: 'Hiru TV', code: 'HIRU', bg: 'from-amber-400 to-orange-600', darkText: true },
+          { chNo: 12, name: 'ART Television', code: 'ART', bg: 'from-red-700 to-slate-900' },
+          { chNo: 13, name: 'AdaDerana 24X7', code: '24X7', bg: 'from-red-600 to-rose-900' },
+          { chNo: 14, name: 'Siyatha TV', code: 'SIY', bg: 'from-indigo-600 to-blue-900' },
+          { chNo: 16, name: 'Shardha TV', code: 'SHR', bg: 'from-emerald-600 to-teal-800' },
+          { chNo: 17, name: 'TV Didula', code: 'DID', bg: 'from-blue-500 to-cyan-700' },
+          { chNo: 18, name: 'Ridee TV', code: 'RID', bg: 'from-slate-500 to-slate-800' },
+          { chNo: 19, name: 'Citi Hitz', code: 'CH', bg: 'from-sky-600 to-blue-800' },
+          { chNo: 20, name: 'TV Supreme', code: 'SUP', bg: 'from-purple-600 to-indigo-800' },
+          { chNo: 21, name: 'Rangiri Sri Lanka', code: 'RSL', bg: 'from-amber-500 to-orange-700' },
+          { chNo: 22, name: 'Hi TV', code: 'Hi', bg: 'from-rose-600 to-red-800' }
         ]
       },
       {
@@ -1369,13 +848,31 @@
         accent: 'from-amber-400 to-yellow-600',
         badgeBg: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
         channels: [
-          { name: 'EWTN / Verbum', code: 'EWTN', bg: 'from-sky-700 to-slate-900', shape: 'lotus' },
-          { name: 'God TV / Swarga TV', code: 'GOD', bg: 'from-amber-500 to-orange-700', shape: 'sun' },
-          { name: 'Shraddha TV', code: 'SHD', bg: 'from-rose-400 to-amber-600', shape: 'lotus' },
-          { name: 'Buddhist TV', code: 'BTV', bg: 'from-amber-500 to-yellow-700', shape: 'lotus', darkText: true },
-          { name: 'Jaya TV', code: 'JAYA', bg: 'from-red-600 to-amber-700', shape: 'sun' },
-          { name: 'Damsathara TV', code: 'DAM', bg: 'from-yellow-500 to-amber-700', shape: 'lotus', darkText: true },
-          { name: 'Pragna TV', code: 'PRG', bg: 'from-amber-400 to-emerald-700', shape: 'lotus' }
+          { chNo: 23, name: 'Pragna TV', code: 'PRG', bg: 'from-amber-400 to-emerald-700' },
+          { chNo: 24, name: 'Damsathara TV', code: 'DAM', bg: 'from-yellow-500 to-amber-700', darkText: true },
+          { chNo: 25, name: 'Jaya TV', code: 'JAYA', bg: 'from-red-600 to-amber-700' },
+          { chNo: 26, name: 'Buddhist TV', code: 'BTV', bg: 'from-amber-500 to-yellow-700', darkText: true },
+          { chNo: 27, name: 'Shraddha TV', code: 'SHD', bg: 'from-rose-400 to-amber-600' },
+          { chNo: 28, name: 'God TV / Swarga TV', code: 'GOD', bg: 'from-amber-500 to-orange-700' },
+          { chNo: 29, name: 'EWTN / Verbum', code: 'EWTN', bg: 'from-sky-700 to-slate-900' }
+        ]
+      },
+      {
+        id: 'news',
+        name: 'News',
+        icon: 'fa-newspaper',
+        accent: 'from-red-500 to-blue-600',
+        badgeBg: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
+        channels: [
+          { chNo: 33, name: 'Al Jazeera', code: 'AJE', bg: 'from-amber-500 to-yellow-700', darkText: true },
+          { chNo: 34, name: 'ABC Australia', code: 'ABC', bg: 'from-slate-700 to-slate-950' },
+          { chNo: 35, name: 'BBC World', code: 'BBC', bg: 'from-red-700 to-rose-950' },
+          { chNo: 36, name: 'CGTN', code: 'CGTN', bg: 'from-blue-700 to-indigo-950' },
+          { chNo: 37, name: 'CNN', code: 'CNN', bg: 'from-red-600 to-red-800' },
+          { chNo: 38, name: 'NDTV', code: 'NDTV', bg: 'from-slate-700 to-red-800' },
+          { chNo: 39, name: 'France 24', code: 'F24', bg: 'from-blue-600 to-sky-800' },
+          { chNo: 40, name: 'EuroNews', code: 'EUR', bg: 'from-sky-600 to-blue-900' },
+          { chNo: 41, name: 'Jaya Plus', code: 'J+', bg: 'from-amber-500 to-red-700' }
         ]
       },
       {
@@ -1385,144 +882,247 @@
         accent: 'from-teal-400 to-emerald-600',
         badgeBg: 'bg-teal-500/15 text-teal-300 border-teal-500/30',
         channels: [
-          { name: 'Food Network', code: 'FOOD', bg: 'from-red-600 to-rose-700', shape: 'ring' },
-          { name: 'HGTV', code: 'HGTV', bg: 'from-teal-600 to-slate-900', shape: 'shield' },
-          { name: 'History TV 18', code: 'HIST', bg: 'from-amber-500 to-red-700', shape: 'shield' },
-          { name: 'Nat Geo', code: 'NGC', bg: 'from-yellow-400 to-amber-500', shape: 'frame', darkText: true },
-          { name: 'TLC', code: 'TLC', bg: 'from-rose-600 to-red-800', shape: 'ring' },
-          { name: 'Discovery Science', code: 'SCI', bg: 'from-slate-700 to-sky-900', shape: 'globe' },
-          { name: 'Discovery', code: 'DISC', bg: 'from-blue-600 to-slate-900', shape: 'globe' },
-          { name: 'Animal Planet', code: 'AP', bg: 'from-emerald-500 to-teal-800', shape: 'globe' },
-          { name: 'NGC Wild', code: 'WILD', bg: 'from-amber-400 to-lime-600', shape: 'frame', darkText: true },
-          { name: 'BBC Earth', code: 'EARTH', bg: 'from-emerald-600 to-cyan-800', shape: 'globe' }
+          { chNo: 42, name: 'BBC Earth', code: 'EARTH', bg: 'from-emerald-600 to-cyan-800' },
+          { chNo: 43, name: 'NGC Wild', code: 'WILD', bg: 'from-amber-400 to-lime-600', darkText: true },
+          { chNo: 44, name: 'Animal Planet', code: 'AP', bg: 'from-emerald-500 to-teal-800' },
+          { chNo: 45, name: 'Discovery', code: 'DISC', bg: 'from-blue-600 to-slate-900' },
+          { chNo: 46, name: 'Discovery Science', code: 'SCI', bg: 'from-slate-700 to-sky-900' },
+          { chNo: 47, name: 'TLC', code: 'TLC', bg: 'from-rose-600 to-red-800' },
+          { chNo: 48, name: 'Nat Geo', code: 'NGC', bg: 'from-yellow-400 to-amber-500', darkText: true },
+          { chNo: 49, name: 'History TV 18', code: 'HIST', bg: 'from-amber-500 to-red-700' },
+          { chNo: 50, name: 'HGTV', code: 'HGTV', bg: 'from-teal-600 to-slate-900' },
+          { chNo: 51, name: 'Food Network', code: 'FOOD', bg: 'from-red-600 to-rose-700' }
+        ]
+      },
+      {
+        id: 'educational',
+        name: 'Educational',
+        icon: 'fa-graduation-cap',
+        accent: 'from-rose-600 to-red-800',
+        badgeBg: 'bg-red-500/15 text-red-300 border-red-500/30',
+        channels: [
+          { chNo: 55, name: 'Nenasa Sinhala O/L', code: 'NS O/L', bg: 'from-rose-800 to-black' },
+          { chNo: 56, name: 'Nenasa Tamil O/L', code: 'NT O/L', bg: 'from-amber-700 to-red-950' },
+          { chNo: 57, name: 'Nenasa Sinhala Grade 1–5', code: 'NS 1-5', bg: 'from-rose-600 to-red-900' },
+          { chNo: 58, name: 'Nenasa Tamil Grade 6–9', code: 'NT 6-9', bg: 'from-red-700 to-slate-900' },
+          { chNo: 59, name: 'Nenasa Sinhala Grade 6–9', code: 'NS 6-9', bg: 'from-rose-700 to-red-950' }
+        ]
+      },
+      {
+        id: 'kids',
+        name: 'Kids',
+        icon: 'fa-child-reaching',
+        accent: 'from-yellow-400 to-emerald-500',
+        badgeBg: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',
+        channels: [
+          { chNo: 60, name: 'Da Vinci', code: 'DV', bg: 'from-red-600 to-amber-600' },
+          { chNo: 61, name: 'Cbeebies', code: 'CB', bg: 'from-lime-500 to-emerald-600', darkText: true },
+          { chNo: 62, name: 'Cartoon Network', code: 'CN', bg: 'from-slate-800 to-black' },
+          { chNo: 63, name: 'A Plus TV', code: 'A+', bg: 'from-sky-500 to-indigo-600' },
+          { chNo: 64, name: 'Nickelodeon', code: 'NCK', bg: 'from-orange-600 to-orange-800' },
+          { chNo: 65, name: 'Baby TV', code: 'BABY', bg: 'from-amber-400 to-pink-500', darkText: true },
+          { chNo: 66, name: 'Disney Jr.', code: 'DJr', bg: 'from-red-500 to-amber-500' },
+          { chNo: 67, name: 'Nick', code: 'NICK', bg: 'from-orange-500 to-amber-600' },
+          { chNo: 68, name: 'Pogo', code: 'POGO', bg: 'from-yellow-400 to-rose-500', darkText: true },
+          { chNo: 69, name: 'Nick Jr.', code: 'NJr', bg: 'from-orange-500 to-sky-500' }
+        ]
+      },
+      {
+        id: 'sports',
+        name: 'Sports',
+        icon: 'fa-trophy',
+        accent: 'from-emerald-500 to-cyan-500',
+        badgeBg: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+        channels: [
+          { chNo: 70, name: 'Sony Sports Ten 1', code: 'TEN1', bg: 'from-indigo-600 to-purple-800', tier: '998' },
+          { chNo: 73, name: 'Eurosport', code: 'EURO', bg: 'from-blue-700 to-rose-600' },
+          { chNo: 74, name: 'Star Sports 2', code: 'SS2', bg: 'from-blue-600 to-indigo-900', tier: '1498' },
+          { chNo: 78, name: 'Premier Sports', code: 'PREM', bg: 'from-emerald-500 to-teal-900', tier: '1498' },
+          { chNo: 81, name: 'Star Sports 1', code: 'SS1', bg: 'from-sky-500 to-blue-800', tier: '1498' },
+          { chNo: 117, name: 'Sony Sports 2 HD', code: 'SS2 HD', bg: 'from-purple-600 to-indigo-950', tier: '1498' },
+          { chNo: 118, name: 'Sony Sports 5 HD', code: 'SS5 HD', bg: 'from-rose-600 to-indigo-950', tier: '1498' },
+          { chNo: 119, name: 'Star Sports Select 2 HD', code: 'SEL 2', bg: 'from-teal-500 to-indigo-900', tier: '1498' },
+          { chNo: 120, name: 'Star Sports Select 1 HD', code: 'SEL 1', bg: 'from-cyan-500 to-blue-900', tier: '1498' },
+          { chNo: 121, name: 'Star Sports 1 HD', code: 'SS1 HD', bg: 'from-amber-500 to-blue-800', tier: '1498' }
+        ]
+      },
+      {
+        id: 'music',
+        name: 'Music',
+        icon: 'fa-music',
+        accent: 'from-fuchsia-500 to-cyan-500',
+        badgeBg: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30',
+        channels: [
+          { chNo: 82, name: 'Channel C', code: 'CH-C', bg: 'from-cyan-500 to-blue-700' },
+          { chNo: 83, name: 'Zing TV', code: 'ZING', bg: 'from-pink-600 to-rose-800' },
+          { chNo: 84, name: 'B4U Music', code: 'B4UM', bg: 'from-rose-600 to-indigo-800' },
+          { chNo: 85, name: 'Jaya Max', code: 'JMAX', bg: 'from-amber-500 to-orange-700' },
+          { chNo: 86, name: 'MTV 90s', code: 'MTV', bg: 'from-yellow-400 to-pink-600', darkText: true, tier: '1498' }
+        ]
+      },
+      {
+        id: 'english',
+        name: 'English Entertainment',
+        icon: 'fa-film',
+        accent: 'from-sky-500 to-indigo-500',
+        badgeBg: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+        channels: [
+          { chNo: 87, name: 'Warner TV', code: 'WTV', bg: 'from-blue-700 to-slate-900', tier: '998' },
+          { chNo: 88, name: 'Fashion TV', code: 'FTV', bg: 'from-slate-700 to-black', tier: '998' },
+          { chNo: 89, name: 'HITS NOW', code: 'NOW', bg: 'from-sky-500 to-blue-700', tier: '998' },
+          { chNo: 90, name: 'Zee Café', code: 'ZEE', bg: 'from-teal-500 to-emerald-700' },
+          { chNo: 91, name: 'Disney International', code: 'DSNY', bg: 'from-blue-600 to-indigo-800' },
+          { chNo: 92, name: 'Comedy Zone', code: 'CZ', bg: 'from-yellow-400 to-orange-500', darkText: true },
+          { chNo: 93, name: 'HITS', code: 'HITS', bg: 'from-amber-500 to-red-600' },
+          { chNo: 115, name: 'ROCK Entertainment HD', code: 'ROCK', bg: 'from-indigo-600 to-purple-900', tier: '1498' },
+          { chNo: 116, name: 'AXN HD', code: 'AXN', bg: 'from-red-600 to-slate-900', tier: '1498' }
+        ]
+      },
+      {
+        id: 'movies',
+        name: 'Movies',
+        icon: 'fa-ticket',
+        accent: 'from-purple-500 to-rose-500',
+        badgeBg: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
+        channels: [
+          { chNo: 94, name: 'HITS MOVIES', code: 'HMOV', bg: 'from-amber-600 to-rose-800', tier: '998' },
+          { chNo: 98, name: '&flix', code: '&FLX', bg: 'from-slate-700 to-zinc-900', tier: '998' }
+        ]
+      },
+      {
+        id: 'hindi',
+        name: 'Hindi Entertainment',
+        icon: 'fa-clapperboard',
+        accent: 'from-amber-500 to-pink-600',
+        badgeBg: 'bg-pink-500/15 text-pink-300 border-pink-500/30',
+        channels: [
+          { chNo: 100, name: 'Colors Cineplex', code: 'CCPX', bg: 'from-amber-500 to-rose-700', tier: '1498' },
+          { chNo: 101, name: 'SET Max', code: 'MAX', bg: 'from-amber-400 to-slate-900', tier: '998' },
+          { chNo: 102, name: 'Sony Set', code: 'SET', bg: 'from-amber-500 to-orange-800' },
+          { chNo: 103, name: 'Star Gold', code: 'SG', bg: 'from-amber-500 to-red-700' },
+          { chNo: 104, name: 'Colors', code: 'COL', bg: 'from-rose-500 to-amber-500' },
+          { chNo: 105, name: 'Star Plus', code: 'S+', bg: 'from-red-600 to-rose-700', tier: '998' },
+          { chNo: 106, name: 'B4U Movies', code: 'B4U', bg: 'from-indigo-600 to-purple-800' },
+          { chNo: 107, name: 'Zee Cinema', code: 'ZC', bg: 'from-teal-500 to-cyan-700', tier: '998' },
+          { chNo: 108, name: 'Star Gold Romance', code: 'SGR', bg: 'from-rose-500 to-pink-700' },
+          { chNo: 109, name: 'Star Bharat', code: 'SB', bg: 'from-blue-600 to-red-600' },
+          { chNo: 110, name: 'Colors / Sab', code: 'SAB', bg: 'from-yellow-500 to-orange-600', darkText: true }
+        ]
+      },
+      {
+        id: 'tamil',
+        name: 'Tamil Entertainment',
+        icon: 'fa-masks-theater',
+        accent: 'from-orange-500 to-rose-600',
+        badgeBg: 'bg-orange-500/15 text-orange-300 border-orange-500/30',
+        channels: [
+          { chNo: 111, name: 'Colors Tamil', code: 'CT', bg: 'from-fuchsia-600 to-pink-700', tier: '998' },
+          { chNo: 112, name: 'Star Vijay', code: 'VIJ', bg: 'from-orange-600 to-rose-700', tier: '998' },
+          { chNo: 113, name: 'Kalaignar TV', code: 'KTV', bg: 'from-red-600 to-yellow-600', tier: '998' },
+          { chNo: 114, name: 'Sirippoli TV', code: 'SRP', bg: 'from-red-600 to-orange-600' },
+          { chNo: 122, name: 'Zee Tamil', code: 'ZT', bg: 'from-orange-500 to-amber-600' },
+          { chNo: 123, name: 'Jaya TV', code: 'JAYA', bg: 'from-emerald-600 to-amber-600' },
+          { chNo: 124, name: 'Jaya Max', code: 'JMAX', bg: 'from-amber-500 to-red-600' }
         ]
       }
     ];
 
     let activePackage = '998';
-    let activeCategory = 'all';
+    // null = collapsed by default until user clicks "All Channels" or a category
+    let activeCategory = null;
     let searchQuery = '';
-    let isPosterMode = false;
     let customUploadedLogos = {};
     let pendingUploadChannelName = null;
 
     try {
       const savedLogos = localStorage.getItem('cms_dialog_tv_custom_logos');
-      if (savedLogos) {
-        customUploadedLogos = JSON.parse(savedLogos);
-      }
+      if (savedLogos) customUploadedLogos = JSON.parse(savedLogos);
     } catch (e) {
       customUploadedLogos = {};
     }
 
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
     function getCategoriesForPackage(pkgKey) {
       return masterChannelCategories
-        .map(cat => {
-          const allowedChannels = cat.channels.filter(ch => {
+        .map(cat => ({
+          ...cat,
+          channels: cat.channels.filter(ch => {
             if (pkgKey === '798') return !ch.tier;
             if (pkgKey === '998') return !ch.tier || ch.tier === '998';
             return true;
-          });
-          return {
-            ...cat,
-            channels: allowedChannels
-          };
-        })
+          })
+        }))
         .filter(cat => cat.channels.length > 0);
     }
 
-    function getChannelSvgWatermark(shape) {
-      switch (shape) {
-        case 'star':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><polygon points="32,4 38,16 52,18 42,27 44,40 32,34 20,40 22,27 12,18 26,16" fill="currentColor"/></svg>`;
-        case 'globe':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><circle cx="32" cy="22" r="16" stroke="currentColor" stroke-width="2"/><ellipse cx="32" cy="22" rx="8" ry="16" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="22" x2="48" y2="22" stroke="currentColor" stroke-width="1.5"/></svg>`;
-        case 'shield':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><path d="M18 6 H46 V24 Q32 40 18 24 Z" fill="currentColor"/></svg>`;
-        case 'sun':
-          return `<svg class="absolute inset-0 w-full h-full opacity-25" viewBox="0 0 64 44" fill="none"><circle cx="32" cy="22" r="12" fill="currentColor"/></svg>`;
-        case 'lotus':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><path d="M32 6 C40 16 40 28 32 38 C24 28 24 16 32 6 Z" fill="currentColor"/><path d="M16 14 C28 18 36 26 48 34" stroke="currentColor" stroke-width="2"/></svg>`;
-        case 'film':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><rect x="10" y="6" width="44" height="32" rx="3" stroke="currentColor" stroke-width="2"/><line x1="18" y1="6" x2="18" y2="38" stroke="currentColor" stroke-width="2"/><line x1="46" y1="6" x2="46" y2="38" stroke="currentColor" stroke-width="2"/></svg>`;
-        case 'book':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><rect x="14" y="8" width="36" height="28" rx="3" stroke="currentColor" stroke-width="2"/><line x1="32" y1="8" x2="32" y2="36" stroke="currentColor" stroke-width="2"/></svg>`;
-        case 'pulse':
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><polyline points="8,24 20,24 26,12 34,34 40,18 46,24 56,24" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>`;
-        default:
-          return `<svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 64 44" fill="none"><circle cx="32" cy="22" r="15" stroke="currentColor" stroke-width="2.5"/></svg>`;
-      }
-    }
-
-    function selectPackage(pkgKey) {
+    function selectPackage(pkgKey, autoOpenAll = false) {
+      const validKeys = ['798', '998', '1498', 'compare'];
+      if (!validKeys.includes(pkgKey)) return;
       activePackage = pkgKey;
-      const meta = packageMeta[pkgKey];
 
-      const topActivePkgLabel = document.getElementById('topActivePkgLabel');
-      if (topActivePkgLabel) {
-        topActivePkgLabel.textContent = `${meta.name} Rs. ${meta.price}`;
-      }
-
-      document.getElementById('heroBadgeText').textContent = meta.badge;
-      document.getElementById('heroPkgTitle').textContent = meta.title;
-      document.getElementById('heroPkgDesc').textContent = meta.desc;
-
-      // Show the eligibility notice only while the Rs. 798 package is selected.
-      const package798Notice = document.getElementById('package798Notice');
-      if (package798Notice) {
-        package798Notice.classList.toggle('hidden', pkgKey !== '798');
-      }
-
-      document.getElementById('heroPriceValue').textContent = meta.price;
-      document.getElementById('heroChannelCount').textContent = meta.count;
-      document.getElementById('footerPkgLabel').textContent = `Dialog Television ${meta.name} (Rs. ${meta.price}) Package Guide`;
-
-      ['798', '998', '1498', 'compare'].forEach(key => {
+      validKeys.forEach(key => {
         const tab = document.getElementById(`tab-${key}`);
         if (!tab) return;
-        if (key === pkgKey) {
-          tab.className = 'pkg-tab flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-lg shadow-rose-950/50';
-        } else {
-          tab.className = 'pkg-tab flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 text-slate-300 hover:text-white hover:bg-slate-800/70';
-        }
+        const isActive = key === pkgKey;
+        tab.setAttribute('aria-pressed', String(isActive));
+        tab.className = isActive
+          ? 'pkg-tab cursor-pointer select-none border-2 border-amber-300 bg-gradient-to-r from-rose-600 to-amber-500 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-300 px-4 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center justify-between gap-2.5 text-white shadow-lg shadow-rose-950/60'
+          : 'pkg-tab cursor-pointer select-none border border-slate-600/80 bg-slate-800/90 hover:bg-slate-700 hover:border-sky-400 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-sky-400 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-between gap-2.5 text-slate-100 shadow-md';
       });
 
       const filterBarSection = document.getElementById('filterBarSection');
       const channelsContainer = document.getElementById('channelsContainer');
+      const channelsPromptState = document.getElementById('channelsPromptState');
       const comparisonContainer = document.getElementById('comparisonContainer');
       const emptyState = document.getElementById('emptyState');
 
       if (pkgKey === 'compare') {
         filterBarSection.classList.add('hidden');
         channelsContainer.classList.add('hidden');
+        channelsPromptState.classList.add('hidden');
         emptyState.classList.add('hidden');
         comparisonContainer.classList.remove('hidden');
-      } else {
-        filterBarSection.classList.remove('hidden');
-        comparisonContainer.classList.add('hidden');
-        activeCategory = 'all';
-        renderCategoryPills();
-        renderChannels();
+        return;
       }
+
+      const meta = packageMeta[pkgKey];
+      document.getElementById('heroPriceValue').textContent = meta.price;
+      document.getElementById('heroChannelCount').textContent = meta.count;
+      document.getElementById('footerPkgLabel').textContent = `Dialog Television ${meta.name} (Rs. ${meta.price}) Package Guide`;
+
+      const package798Notice = document.getElementById('package798Notice');
+      if (package798Notice) package798Notice.classList.toggle('hidden', pkgKey !== '798');
+
+      filterBarSection.classList.remove('hidden');
+      comparisonContainer.classList.add('hidden');
+
+      if (autoOpenAll) {
+        activeCategory = 'all';
+      }
+      renderCategoryPills();
+      renderChannels();
     }
 
     function renderCategoryPills() {
       const pillsContainer = document.getElementById('categoryPills');
       if (!pillsContainer || activePackage === 'compare') return;
-
       const currentCats = getCategoriesForPackage(activePackage);
       const totalCount = currentCats.reduce((sum, cat) => sum + cat.channels.length, 0);
 
       let html = `
-        <button
-          type="button"
-          onclick="selectCategory('all')"
-          class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-            activeCategory === 'all'
-              ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-md'
-              : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
-          }"
-        >
+        <button type="button" onclick="toggleAllChannels()" class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+          activeCategory === 'all'
+            ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-md'
+            : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+        }">
           <span>All Channels</span>
           <span class="px-1.5 py-0.5 rounded-md text-[10px] ${activeCategory === 'all' ? 'bg-black/25 text-white' : 'bg-slate-800 text-amber-400'}">${totalCount}</span>
         </button>
@@ -1531,17 +1131,13 @@
       currentCats.forEach(cat => {
         const isActive = activeCategory === cat.id;
         html += `
-          <button
-            type="button"
-            onclick="selectCategory('${cat.id}')"
-            class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-              isActive
-                ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-md'
-                : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
-            }"
-          >
+          <button type="button" onclick="selectCategory('${cat.id}')" class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            isActive
+              ? 'bg-gradient-to-r from-rose-600 to-amber-500 text-white shadow-md'
+              : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+          }">
             <i class="fa-solid ${cat.icon} text-[11px] ${isActive ? 'text-white' : 'text-amber-400'}"></i>
-            <span>${cat.name}</span>
+            <span>${escapeHtml(cat.name)}</span>
             <span class="px-1.5 py-0.5 rounded-md text-[10px] ${isActive ? 'bg-black/25 text-white' : 'bg-slate-800 text-slate-300'}">${cat.channels.length}</span>
           </button>
         `;
@@ -1550,118 +1146,43 @@
       pillsContainer.innerHTML = html;
     }
 
-    function getAuthenticChannelLogo(ch) {
-      if (customUploadedLogos[ch.name]) {
-        return `<img src="${customUploadedLogos[ch.name]}" alt="${ch.name}" class="w-full h-full object-contain bg-white p-0.5 rounded-lg" />`;
-      }
+    function toggleAllChannels() {
+      activeCategory = activeCategory === 'all' ? null : 'all';
+      renderCategoryPills();
+      renderChannels();
+    }
 
-      const n = ch.name;
+    function getFallbackBadgeHtml(ch) {
+      const textSize = ch.code.length > 4 ? 'text-[9px]' : 'text-[11px]';
+      const textColor = ch.darkText ? 'text-slate-950' : 'text-white';
+      return `
+        <div class="channel-fallback w-full h-full bg-gradient-to-br ${ch.bg} flex items-center justify-center ${textColor} font-display font-extrabold ${textSize} px-1 text-center">
+          ${escapeHtml(ch.code)}
+        </div>
+      `;
+    }
 
-      const svgMap = {
-        'Nethra': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="nethraGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D97706"/><stop offset="100%" stop-color="#7F1D1D"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#nethraGrad)"/><path d="M10 19 Q32 6 54 19 Q32 32 10 19Z" fill="#FEF3C7" stroke="#FACC15" stroke-width="1.5"/><circle cx="32" cy="19" r="5" fill="#991B1B"/><circle cx="30.5" cy="17.5" r="1.5" fill="#FFFFFF"/><text x="32" y="39" text-anchor="middle" fill="#FEF08A" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5" letter-spacing="0.5">NETHRA</text></svg>`,
-        'TV Supreme': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="supGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7E22CE"/><stop offset="100%" stop-color="#1E1B4B"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#supGrad)"/><path d="M16 23 L22 10 L32 19 L42 10 L48 23 Z" fill="#FACC15" stroke="#FEF08A" stroke-width="0.8"/><circle cx="22" cy="9" r="1.8" fill="#FFFFFF"/><circle cx="32" cy="8" r="2" fill="#FFFFFF"/><circle cx="42" cy="9" r="1.8" fill="#FFFFFF"/><text x="32" y="37" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8" letter-spacing="0.4">SUPREME</text></svg>`,
-        'Hi TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="hiGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F43F5E"/><stop offset="100%" stop-color="#881337"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#hiGrad)"/><circle cx="51" cy="11" r="4" fill="#FACC15"/><text x="30" y="29" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="19" letter-spacing="-0.5">Hi!</text></svg>`,
-        'Rangiri Sri Lanka': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="rangGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#7C2D12"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#rangGrad)"/><path d="M32 6 C38 13 38 22 32 28 C26 22 26 13 32 6Z" fill="#FEF08A"/><path d="M21 15 C27 17 30 22 32 28 C25 27 21 22 21 15Z" fill="#FDE047"/><path d="M43 15 C37 17 34 22 32 28 C39 27 43 22 43 15Z" fill="#FDE047"/><text x="32" y="39" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8" letter-spacing="0.4">RANGIRI</text></svg>`,
-        'Citi Hitz': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="citiGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0284C7"/><stop offset="100%" stop-color="#0F172A"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#citiGrad)"/><text x="32" y="19" text-anchor="middle" fill="#38BDF8" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="11.5" letter-spacing="0.8">CITI</text><rect x="11" y="22" width="42" height="14" rx="3" fill="#F59E0B"/><text x="32" y="32" text-anchor="middle" fill="#0F172A" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="10" letter-spacing="0.8">HITZ</text></svg>`,
-        'Ridee TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="rideeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#64748B"/><stop offset="100%" stop-color="#0F172A"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#rideeGrad)"/><rect x="10" y="8" width="44" height="20" rx="4" fill="none" stroke="#E2E8F0" stroke-width="2"/><polygon points="29,13 38,18 29,23" fill="#38BDF8"/><text x="32" y="38" text-anchor="middle" fill="#F8FAFC" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5" letter-spacing="0.6">RIDEE TV</text></svg>`,
-        'TV Didula': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="didGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0EA5E9"/><stop offset="100%" stop-color="#1E3A8A"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#didGrad)"/><circle cx="32" cy="16" r="8" fill="#FACC15"/><path d="M28 13 L36 16 L28 19 Z" fill="#1E3A8A"/><text x="32" y="37" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="9" letter-spacing="0.5">DIDULA</text></svg>`,
-        'Shardha TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="shardGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#064E3B"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#shardGrad)"/><circle cx="32" cy="16" r="8.5" fill="#FDE047"/><path d="M24 22 Q32 14 40 22" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/><text x="32" y="38" text-anchor="middle" fill="#A7F3D0" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8" letter-spacing="0.4">SHARDHA</text></svg>`,
-        'Siyatha TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="siyGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#172554"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#siyGrad)"/><circle cx="32" cy="17" r="9" fill="none" stroke="#FACC15" stroke-width="2.5"/><circle cx="32" cy="17" r="4" fill="#EF4444"/><text x="32" y="38" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5" letter-spacing="0.4">SIYATHA</text></svg>`,
-        'AdaDerana 24X7': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="der24Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#7F1D1D"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#der24Grad)"/><rect x="6" y="6" width="52" height="14" rx="3" fill="#FFFFFF"/><text x="32" y="16" text-anchor="middle" fill="#DC2626" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5" letter-spacing="0.4">DERANA</text><rect x="11" y="23" width="42" height="15" rx="3" fill="#0F172A"/><text x="32" y="34" text-anchor="middle" fill="#FACC15" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="10.5" letter-spacing="0.6">24X7</text></svg>`,
-        'ART Television': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F172A"/><rect x="7" y="7" width="50" height="21" rx="4" fill="#DC2626" stroke="#F87171" stroke-width="1"/><text x="32" y="22" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="13" letter-spacing="1.2">ART</text><text x="32" y="38" text-anchor="middle" fill="#CBD5E1" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="7" letter-spacing="0.8">TELEVISION</text></svg>`,
-        'Hiru TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="hiruGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FACC15"/><stop offset="100%" stop-color="#EA580C"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#hiruGrad)"/><circle cx="32" cy="17" r="9.5" fill="#FEF08A" stroke="#DC2626" stroke-width="2"/><path d="M32 5 V8 M32 26 V29 M20 17 H23 M41 17 H44 M23.5 8.5 L25.5 10.5 M38.5 23.5 L40.5 25.5 M40.5 8.5 L38.5 10.5 M25.5 23.5 L23.5 25.5" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round"/><text x="32" y="39" text-anchor="middle" fill="#7F1D1D" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="9.5" letter-spacing="0.5">HIRU TV</text></svg>`,
-        'TV1': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="tv1Grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9333EA"/><stop offset="100%" stop-color="#4C1D95"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#tv1Grad)"/><circle cx="48" cy="12" r="5" fill="#EC4899"/><text x="31" y="29" text-anchor="middle" fill="#FACC15" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="18" letter-spacing="-0.5">TV1</text></svg>`,
-        'Shakthi TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="shakGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDE047"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#shakGrad)"/><polygon points="32,5 49,30 15,30" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.2"/><text x="32" y="25" text-anchor="middle" fill="#FEF08A" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5">S</text><text x="32" y="40" text-anchor="middle" fill="#450A0A" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8" letter-spacing="0.4">SHAKTHI</text></svg>`,
-        'Sirasa TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><polygon points="32,5 53,35 11,35" fill="#DC2626"/><polygon points="32,11 46,32 18,32" fill="none" stroke="#FCA5A5" stroke-width="1.2"/><text x="32" y="31" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5" letter-spacing="0.5">SIRASA</text><text x="32" y="41" text-anchor="middle" fill="#991B1B" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="6.5" letter-spacing="1">TV</text></svg>`,
-        'Swarnavahini': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="swarnaGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1E1B4B"/><stop offset="100%" stop-color="#0F172A"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#swarnaGrad)"/><circle cx="32" cy="17" r="10.5" fill="#FACC15" stroke="#F59E0B" stroke-width="1.5"/><path d="M23 17 Q32 9 41 17 Q32 25 23 17Z" fill="#DC2626"/><text x="32" y="38" text-anchor="middle" fill="#FDE047" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="7.5" letter-spacing="0.4">SWARNA</text></svg>`,
-        'TV Derana': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><path d="M10 27 L19 9 L28 21 L36 9 L45 27" fill="none" stroke="#E11D48" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="51" cy="13" r="4" fill="#F59E0B"/><text x="32" y="39" text-anchor="middle" fill="#0F172A" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="8.5" letter-spacing="0.6">DERANA</text></svg>`,
-        'Vasantham TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="vasGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#DB2777"/><stop offset="100%" stop-color="#831843"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#vasGrad)"/><path d="M19 9 L32 28 L45 9" fill="none" stroke="#FDE047" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="32" y="39" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="7.2" letter-spacing="0.3">VASANTHAM</text></svg>`,
-        'ITN': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="itnGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#DC2626"/><stop offset="100%" stop-color="#7F1D1D"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#itnGrad)"/><ellipse cx="32" cy="22" rx="22" ry="13" fill="none" stroke="#FACC15" stroke-width="2"/><text x="32" y="28" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="17" letter-spacing="1.2">ITN</text></svg>`,
-        'Rupavahini': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="rupGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#991B1B"/><stop offset="100%" stop-color="#450A0A"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#rupGrad)"/><ellipse cx="32" cy="19" rx="19" ry="10" fill="none" stroke="#FBBF24" stroke-width="2.2"/><ellipse cx="32" cy="19" rx="10" ry="16" fill="none" stroke="#FDE68A" stroke-width="1.4"/><circle cx="32" cy="19" r="3.5" fill="#FACC15"/><text x="32" y="39" text-anchor="middle" fill="#FEF3C7" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="7.2" letter-spacing="0.4">RUPAVAHINI</text></svg>`,
-        'Channel Eye': `<svg viewBox="0 0 64 44" class="w-full h-full"><defs><linearGradient id="eyeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0369A1"/><stop offset="100%" stop-color="#0F172A"/></linearGradient></defs><rect width="64" height="44" rx="8" fill="url(#eyeGrad)"/><path d="M9 20 Q32 6 55 20 Q32 34 9 20Z" fill="#0284C7" stroke="#7DD3FC" stroke-width="1.8"/><circle cx="32" cy="20" r="6" fill="#FFFFFF"/><circle cx="32" cy="20" r="2.8" fill="#0F172A"/><text x="32" y="39" text-anchor="middle" fill="#BAE6FD" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="7.5" letter-spacing="0.8">EYE</text></svg>`,
+    function getChannelLogoHtml(ch) {
+      const logoUrl = customUploadedLogos[ch.name] || (dialogPrepaidLogoUrls[ch.name] || '').trim();
+      const fallback = getFallbackBadgeHtml(ch);
 
-        'CNN': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#CC0000"/><text x="32" y="29" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans,sans-serif" font-weight="900" font-size="19" letter-spacing="-1">CNN</text></svg>`,
-        'BBC World': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#B91C1C"/><rect x="8" y="9" width="14" height="14" fill="#FFFFFF"/><rect x="25" y="9" width="14" height="14" fill="#FFFFFF"/><rect x="42" y="9" width="14" height="14" fill="#FFFFFF"/><text x="15" y="20" text-anchor="middle" fill="#000" font-weight="900" font-size="11">B</text><text x="32" y="20" text-anchor="middle" fill="#000" font-weight="900" font-size="11">B</text><text x="49" y="20" text-anchor="middle" fill="#000" font-weight="900" font-size="11">C</text><text x="32" y="36" text-anchor="middle" fill="#FFFFFF" font-weight="800" font-size="8">WORLD</text></svg>`,
-        'Al Jazeera': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><path d="M32 5 C38 15 40 24 32 31 C24 24 26 15 32 5Z" fill="#D97706"/><text x="32" y="40" text-anchor="middle" fill="#1E293B" font-weight="900" font-size="7.5">AL JAZEERA</text></svg>`,
-        'France 24': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0055A4"/><text x="32" y="19" text-anchor="middle" fill="#FFFFFF" font-weight="800" font-size="8.5">FRANCE</text><rect x="18" y="22" width="28" height="15" rx="2" fill="#FFFFFF"/><text x="32" y="34" text-anchor="middle" fill="#0055A4" font-weight="900" font-size="12">24</text></svg>`,
-        'EuroNews': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><text x="32" y="26" text-anchor="middle" fill="#0284C7" font-weight="900" font-size="10.5">euronews.</text></svg>`,
-        'NDTV': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1E293B"/><text x="32" y="27" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="14">NDTV</text><rect x="14" y="31" width="36" height="3" fill="#EF4444"/></svg>`,
-        'CGTN': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1E3A8A"/><text x="32" y="27" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="14">CGTN</text></svg>`,
-        'ABC Australia': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F172A"/><path d="M16 22 C16 14 28 14 28 22 C28 30 36 30 36 22 C36 14 48 14 48 22" fill="none" stroke="#FFFFFF" stroke-width="3.5"/><text x="32" y="39" text-anchor="middle" fill="#94A3B8" font-weight="800" font-size="7.5">ABC AUS</text></svg>`,
-
-        'Cartoon Network': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#000000"/><rect x="8" y="8" width="24" height="28" fill="#000000" stroke="#FFFFFF" stroke-width="1.5"/><rect x="32" y="8" width="24" height="28" fill="#FFFFFF"/><text x="20" y="28" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="17">C</text><text x="44" y="28" text-anchor="middle" fill="#000000" font-weight="900" font-size="17">N</text></svg>`,
-        'Nickelodeon': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#F97316"/><text x="32" y="26" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9.5">nickelodeon</text></svg>`,
-        'Nick': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#EA580C"/><text x="32" y="28" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="16">nick</text></svg>`,
-        'Nick Jr.': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><text x="24" y="27" text-anchor="middle" fill="#F97316" font-weight="900" font-size="14">nick</text><text x="47" y="27" text-anchor="middle" fill="#0284C7" font-weight="900" font-size="13">jr</text></svg>`,
-        'Pogo': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FACC15"/><text x="32" y="28" text-anchor="middle" fill="#DC2626" font-weight="900" font-size="15">POGO</text></svg>`,
-        'Disney Jr.': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#DC2626"/><text x="32" y="21" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="11">Disney</text><text x="32" y="35" text-anchor="middle" fill="#FDE047" font-weight="900" font-size="11">Junior</text></svg>`,
-        'Disney International': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1D4ED8"/><path d="M14 14 Q32 6 50 14" fill="none" stroke="#93C5FD" stroke-width="2"/><text x="32" y="29" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="13">Disney</text></svg>`,
-        'Baby TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FDE047"/><circle cx="32" cy="18" r="10" fill="#EC4899"/><text x="32" y="38" text-anchor="middle" fill="#831843" font-weight="900" font-size="9">BabyTV</text></svg>`,
-        'Cbeebies': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FACC15"/><circle cx="22" cy="16" r="5" fill="#22C55E"/><circle cx="34" cy="14" r="6" fill="#06B6D4"/><circle cx="44" cy="18" r="4" fill="#EC4899"/><text x="32" y="36" text-anchor="middle" fill="#1E293B" font-weight="900" font-size="9.5">CBeebies</text></svg>`,
-        'Da Vinci': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#DC2626"/><text x="32" y="26" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="11">Da Vinci</text></svg>`,
-
-        'Nat Geo': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#111827"/><rect x="10" y="9" width="12" height="26" fill="none" stroke="#FACC15" stroke-width="3.5"/><text x="41" y="21" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">NAT</text><text x="41" y="32" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">GEO</text></svg>`,
-        'NGC Wild': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#111827"/><rect x="10" y="9" width="12" height="26" fill="none" stroke="#FACC15" stroke-width="3.5"/><text x="41" y="26" text-anchor="middle" fill="#A3E635" font-weight="900" font-size="10.5">WILD</text></svg>`,
-        'Discovery': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F172A"/><circle cx="17" cy="22" r="7" fill="#38BDF8"/><text x="39" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">Discovery</text></svg>`,
-        'Discovery Science': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1E293B"/><rect x="14" y="7" width="36" height="20" rx="4" fill="#F97316"/><text x="32" y="21" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="11">SCI</text><text x="32" y="37" text-anchor="middle" fill="#CBD5E1" font-weight="800" font-size="7.5">SCIENCE</text></svg>`,
-        'Animal Planet': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#065F46"/><text x="32" y="20" text-anchor="middle" fill="#6EE7B7" font-weight="900" font-size="9.5">ANIMAL</text><text x="32" y="33" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9.5">PLANET</text></svg>`,
-        'BBC Earth': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F766E"/><text x="32" y="19" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="10">BBC</text><text x="32" y="33" text-anchor="middle" fill="#99F6E4" font-weight="900" font-size="10.5">EARTH</text></svg>`,
-        'Food Network': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><circle cx="32" cy="22" r="17" fill="#DC2626"/><text x="32" y="20" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">food</text><text x="32" y="29" text-anchor="middle" fill="#FEE2E2" font-weight="700" font-size="6.5">network</text></svg>`,
-        'HGTV': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0D9488"/><polygon points="32,6 52,20 12,20" fill="#FFFFFF"/><text x="32" y="35" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="13">HGTV</text></svg>`,
-        'History TV 18': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#111827"/><text x="32" y="27" text-anchor="middle" fill="#FACC15" font-weight="900" font-size="18">H</text><rect x="14" y="31" width="36" height="3" fill="#DC2626"/></svg>`,
-        'TLC': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#E11D48"/><text x="32" y="29" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="18">TLC</text></svg>`,
-
-        'Eurosport': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1E3A8A"/><text x="32" y="25" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">EUROSPORT</text><rect x="12" y="29" width="40" height="3" fill="#EF4444"/></svg>`,
-        'Sony Sports Ten 1': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#312E81"/><text x="32" y="18" text-anchor="middle" fill="#C7D2FE" font-weight="800" font-size="8">SONY</text><text x="32" y="33" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="12">TEN 1</text></svg>`,
-        'Star Sports 1': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0284C7"/><polygon points="32,4 35,12 43,12 37,17 39,25 32,20 25,25 27,17 21,12 29,12" fill="#FACC15"/><text x="32" y="38" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9.5">SPORTS 1</text></svg>`,
-        'Star Sports 2': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1D4ED8"/><polygon points="32,4 35,12 43,12 37,17 39,25 32,20 25,25 27,17 21,12 29,12" fill="#FACC15"/><text x="32" y="38" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9.5">SPORTS 2</text></svg>`,
-        'Star Sports 1 HD': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0369A1"/><text x="32" y="19" text-anchor="middle" fill="#FDE047" font-weight="900" font-size="10">STAR 1</text><rect x="16" y="23" width="32" height="14" rx="3" fill="#F59E0B"/><text x="32" y="34" text-anchor="middle" fill="#000" font-weight="900" font-size="10">HD</text></svg>`,
-        'Star Sports Select 1 HD': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F172A"/><text x="32" y="18" text-anchor="middle" fill="#38BDF8" font-weight="900" font-size="8.5">SELECT 1</text><text x="32" y="34" text-anchor="middle" fill="#FACC15" font-weight="900" font-size="11">HD</text></svg>`,
-        'Star Sports Select 2 HD': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F172A"/><text x="32" y="18" text-anchor="middle" fill="#2DD4BF" font-weight="900" font-size="8.5">SELECT 2</text><text x="32" y="34" text-anchor="middle" fill="#FACC15" font-weight="900" font-size="11">HD</text></svg>`,
-        'Sony Sports 2 HD': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#4C1D95"/><text x="32" y="18" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">SONY 2</text><text x="32" y="34" text-anchor="middle" fill="#FDE047" font-weight="900" font-size="11">HD</text></svg>`,
-        'Sony Sports 5 HD': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#831843"/><text x="32" y="18" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">SONY 5</text><text x="32" y="34" text-anchor="middle" fill="#FDE047" font-weight="900" font-size="11">HD</text></svg>`,
-        'Premier Sports': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#065F46"/><text x="32" y="20" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9">PREMIER</text><text x="32" y="33" text-anchor="middle" fill="#6EE7B7" font-weight="800" font-size="8.5">SPORTS</text></svg>`,
-
-        'HITS': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FACC15"/><text x="32" y="29" text-anchor="middle" fill="#B91C1C" font-weight="900" font-size="17">HITS</text></svg>`,
-        'HITS NOW': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0284C7"/><text x="32" y="20" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="11">HITS</text><text x="32" y="34" text-anchor="middle" fill="#FDE047" font-weight="900" font-size="10">NOW</text></svg>`,
-        'HITS MOVIES': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#991B1B"/><text x="32" y="20" text-anchor="middle" fill="#FACC15" font-weight="900" font-size="11">HITS</text><text x="32" y="34" text-anchor="middle" fill="#FFFFFF" font-weight="800" font-size="8.5">MOVIES</text></svg>`,
-        'Warner TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1E3A8A"/><path d="M20 9 H44 V24 Q32 37 20 24 Z" fill="#FACC15"/><text x="32" y="25" text-anchor="middle" fill="#1E3A8A" font-weight="900" font-size="12">WB</text></svg>`,
-        'Fashion TV': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#09090B"/><polygon points="32,7 48,22 32,37 16,22" fill="none" stroke="#FFFFFF" stroke-width="2"/><text x="32" y="27" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="14">f</text></svg>`,
-        'AXN HD': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#111827"/><text x="32" y="27" text-anchor="middle" fill="#EF4444" font-weight="900" font-size="16">AXN</text></svg>`,
-        '&flix': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><text x="32" y="28" text-anchor="middle" fill="#0F172A" font-weight="900" font-size="15">&amp;flix</text></svg>`,
-        'Star Plus': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#DC2626"/><polygon points="32,5 36,15 47,15 38,21 41,31 32,25 23,31 26,21 17,15 28,15" fill="#FACC15"/><text x="32" y="40" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="7.5">STAR PLUS</text></svg>`,
-        'Star Bharat': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#1D4ED8"/><polygon points="32,6 36,16 46,16 38,22 41,31 32,25 23,31 26,22 18,16 28,16" fill="#EF4444"/><text x="32" y="40" text-anchor="middle" fill="#FFFFFF" font-weight="800" font-size="7.5">BHARAT</text></svg>`,
-        'Star Gold': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#B91C1C"/><polygon points="32,6 36,16 46,16 38,22 41,31 32,25 23,31 26,22 18,16 28,16" fill="#FDE047"/><text x="32" y="40" text-anchor="middle" fill="#FDE047" font-weight="900" font-size="8">GOLD</text></svg>`,
-        'Star Vijay': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#EA580C"/><polygon points="32,6 36,16 46,16 38,22 41,31 32,25 23,31 26,22 18,16 28,16" fill="#FFFFFF"/><text x="32" y="40" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="8">VIJAY</text></svg>`,
-        'Colors': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><circle cx="32" cy="19" r="11" fill="none" stroke="#E11D48" stroke-width="3.5"/><text x="32" y="39" text-anchor="middle" fill="#E11D48" font-weight="900" font-size="8.5">colors</text></svg>`,
-        'Colors Tamil': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#DB2777"/><text x="32" y="21" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="10">colors</text><text x="32" y="34" text-anchor="middle" fill="#FDE047" font-weight="800" font-size="8.5">TAMIL</text></svg>`,
-        'Zee Café': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FFFFFF"/><text x="32" y="27" text-anchor="middle" fill="#0D9488" font-weight="900" font-size="13">ZEE</text><text x="32" y="37" text-anchor="middle" fill="#0F172A" font-weight="800" font-size="8">CAFÉ</text></svg>`,
-        'Zee Tamil': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#F97316"/><text x="32" y="23" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="13">ZEE</text><text x="32" y="36" text-anchor="middle" fill="#FEF08A" font-weight="800" font-size="8.5">TAMIL</text></svg>`,
-        'Zee Cinema': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#0F766E"/><text x="32" y="23" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="13">ZEE</text><text x="32" y="36" text-anchor="middle" fill="#99F6E4" font-weight="800" font-size="8">CINEMA</text></svg>`,
-        'SET Max': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#FACC15"/><rect x="8" y="22" width="48" height="15" rx="3" fill="#0F172A"/><text x="32" y="18" text-anchor="middle" fill="#0F172A" font-weight="900" font-size="11">SET</text><text x="32" y="33" text-anchor="middle" fill="#FACC15" font-weight="900" font-size="11">MAX</text></svg>`,
-        'Sony Set': `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#B45309"/><text x="32" y="20" text-anchor="middle" fill="#FEF3C7" font-weight="800" font-size="8.5">SONY</text><text x="32" y="35" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="14">SET</text></svg>`
-      };
-
-      if (svgMap[n]) {
-        return svgMap[n];
-      }
-
-      if (n.startsWith('Nenasa')) {
-        return `<svg viewBox="0 0 64 44" class="w-full h-full"><rect width="64" height="44" rx="8" fill="#881337"/><rect x="6" y="7" width="52" height="15" rx="3" fill="#FACC15"/><text x="32" y="18" text-anchor="middle" fill="#881337" font-weight="900" font-size="9">NENASA</text><text x="32" y="35" text-anchor="middle" fill="#FFFFFF" font-weight="900" font-size="9.5">${ch.code.replace('NS ', '').replace('NT ', '')}</text></svg>`;
+      if (!logoUrl) {
+        return fallback;
       }
 
       return `
-        <div class="w-full h-full bg-gradient-to-br ${ch.bg} flex flex-col items-center justify-center relative overflow-hidden ${ch.darkText ? 'text-slate-950 font-black' : 'text-white font-extrabold'}">
-          ${getChannelSvgWatermark(ch.shape)}
-          <span class="relative z-10 font-display ${ch.code.length > 4 ? 'text-[9px]' : 'text-[11px]'} leading-none text-center px-1 drop-shadow">
-            ${ch.code}
-          </span>
+        <img
+          src="${escapeHtml(logoUrl)}"
+          alt="${escapeHtml(ch.name)} logo"
+          class="channel-logo-img w-full h-full object-contain bg-white p-0.5 rounded-lg"
+        />
+        <div class="channel-fallback hidden w-full h-full bg-gradient-to-br ${ch.bg} flex items-center justify-center ${ch.darkText ? 'text-slate-950' : 'text-white'} font-display font-extrabold ${ch.code.length > 4 ? 'text-[9px]' : 'text-[11px]'} px-1 text-center">
+          ${escapeHtml(ch.code)}
         </div>
       `;
     }
 
     function triggerChannelLogoUpload(channelName) {
-      if (isPosterMode) return;
       pendingUploadChannelName = channelName;
       const input = document.getElementById('logoUploadInput');
       input.value = '';
@@ -1671,73 +1192,72 @@
     function handleLogoFileSelected(event) {
       const file = event.target.files && event.target.files[0];
       if (!file || !pendingUploadChannelName) return;
-
       const reader = new FileReader();
       reader.onload = function (e) {
         customUploadedLogos[pendingUploadChannelName] = e.target.result;
         try {
           localStorage.setItem('cms_dialog_tv_custom_logos', JSON.stringify(customUploadedLogos));
-        } catch (err) {
-          // Ignore storage quota errors
-        }
+        } catch (err) {}
         renderChannels();
-        showToast('Channel Logo Updated', `Custom logo set for ${pendingUploadChannelName}.`);
       };
       reader.readAsDataURL(file);
     }
 
     function renderChannels() {
       if (activePackage === 'compare') return;
-
       const container = document.getElementById('channelsContainer');
+      const promptState = document.getElementById('channelsPromptState');
       const emptyState = document.getElementById('emptyState');
-      const visibleCountEl = document.getElementById('visibleCount');
-
-      const currentCats = getCategoriesForPackage(activePackage);
+      const visibleCountWrap = document.getElementById('visibleCountWrap');
       const query = searchQuery.trim().toLowerCase();
+
+      // Keep collapsed until user clicks All Channels / a category or searches
+      if (!activeCategory && query === '') {
+        container.classList.add('hidden');
+        emptyState.classList.add('hidden');
+        promptState.classList.remove('hidden');
+        visibleCountWrap.innerHTML = `Click <strong class="text-amber-400">All Channels</strong> or a category to view`;
+        return;
+      }
+
+      promptState.classList.add('hidden');
+      const currentCats = getCategoriesForPackage(activePackage);
+      const effectiveCategory = activeCategory || 'all';
       let totalVisible = 0;
       let sectionsHtml = '';
 
       currentCats.forEach(cat => {
-        if (activeCategory !== 'all' && activeCategory !== cat.id) return;
-
+        if (effectiveCategory !== 'all' && effectiveCategory !== cat.id) return;
         const filteredChannels = cat.channels.filter(ch =>
           ch.name.toLowerCase().includes(query) ||
           ch.code.toLowerCase().includes(query) ||
+          String(ch.chNo).includes(query) ||
           cat.name.toLowerCase().includes(query)
         );
-
         if (filteredChannels.length === 0) return;
-
         totalVisible += filteredChannels.length;
 
-        const cardsHtml = filteredChannels.map(ch => {
-          let tierPill = '';
-          if (activePackage === '998' && ch.tier === '998') {
-            tierPill = `<span class="inline-block px-1.5 py-0.2 rounded text-[9px] font-extrabold bg-rose-500/20 text-rose-300 border border-rose-500/30">+998</span>`;
-          } else if (activePackage === '1498' && ch.tier === '1498') {
-            tierPill = `<span class="inline-block px-1.5 py-0.2 rounded text-[9px] font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">+1498</span>`;
-          }
-
-          return `
-            <div
-              onclick="triggerChannelLogoUpload('${ch.name.replace(/'/g, "\\'")}')"
-              title="Click to upload custom logo for ${ch.name}"
-              class="channel-card group cursor-pointer flex items-center gap-2.5 bg-slate-900/95 hover:bg-slate-800 border border-slate-800 hover:border-amber-400/50 rounded-xl p-2 transition-all duration-200 shadow-sm"
-            >
-              <div class="channel-badge tv-logo-frame relative w-14 h-10 rounded-lg shrink-0 border border-white/15 overflow-hidden">
-                ${getAuthenticChannelLogo(ch)}
-              </div>
-
-              <div class="min-w-0 flex-1">
-                <p class="channel-name text-xs sm:text-[13px] font-semibold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
-                  ${ch.name}
-                </p>
-                ${tierPill ? `<div class="mt-0.5">${tierPill}</div>` : ''}
-              </div>
+        const cardsHtml = filteredChannels.map(ch => `
+          <div
+            onclick="triggerChannelLogoUpload('${ch.name.replace(/'/g, "\'")}')"
+            title="Ch. ${ch.chNo} — Click to upload custom logo for ${escapeHtml(ch.name)}"
+            class="channel-card group cursor-pointer flex items-center gap-2.5 bg-slate-900/95 hover:bg-slate-800 border border-slate-800 hover:border-amber-400/50 rounded-xl p-2 transition-all duration-200 shadow-sm"
+          >
+            <div class="channel-badge tv-logo-frame relative w-14 h-10 rounded-lg shrink-0 border border-white/15 overflow-hidden">
+              ${getChannelLogoHtml(ch)}
             </div>
-          `;
-        }).join('');
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="inline-flex items-center px-1.5 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-[10px] font-extrabold text-amber-300 leading-tight">
+                  Ch. ${String(ch.chNo).padStart(2, '0')}
+                </span>
+              </div>
+              <p class="channel-name text-xs sm:text-[13px] font-semibold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
+                ${escapeHtml(ch.name)}
+              </p>
+            </div>
+          </div>
+        `).join('');
 
         sectionsHtml += `
           <div class="category-section rounded-2xl bg-slate-900/45 border border-slate-800/80 p-4 sm:p-5">
@@ -1746,15 +1266,12 @@
                 <div class="w-8 h-8 rounded-xl bg-gradient-to-br ${cat.accent} flex items-center justify-center text-white shadow">
                   <i class="fa-solid ${cat.icon} text-xs"></i>
                 </div>
-                <h3 class="font-display text-base sm:text-lg font-extrabold text-white tracking-tight">
-                  ${cat.name}
-                </h3>
+                <h3 class="font-display text-base sm:text-lg font-extrabold text-white tracking-tight">${escapeHtml(cat.name)}</h3>
               </div>
               <span class="px-2.5 py-1 rounded-full text-xs font-bold border ${cat.badgeBg}">
                 ${filteredChannels.length} ${filteredChannels.length === 1 ? 'Channel' : 'Channels'}
               </span>
             </div>
-
             <div class="category-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5">
               ${cardsHtml}
             </div>
@@ -1762,8 +1279,7 @@
         `;
       });
 
-      visibleCountEl.textContent = totalVisible;
-
+      visibleCountWrap.innerHTML = `Showing <strong class="text-amber-400">${totalVisible}</strong> channel entries`;
       if (totalVisible === 0) {
         container.classList.add('hidden');
         emptyState.classList.remove('hidden');
@@ -1771,6 +1287,15 @@
         container.classList.remove('hidden');
         emptyState.classList.add('hidden');
         container.innerHTML = sectionsHtml;
+
+        container.querySelectorAll('img.channel-logo-img').forEach(img => {
+          img.addEventListener('error', () => {
+            const frame = img.closest('.channel-badge');
+            img.classList.add('hidden');
+            const fallback = frame ? frame.querySelector('.channel-fallback') : null;
+            if (fallback) fallback.classList.remove('hidden');
+          });
+        });
       }
     }
 
@@ -1783,11 +1308,7 @@
     function handleSearch(val) {
       searchQuery = val;
       const clearBtn = document.getElementById('clearSearchBtn');
-      if (val.trim().length > 0) {
-        clearBtn.classList.remove('hidden');
-      } else {
-        clearBtn.classList.add('hidden');
-      }
+      clearBtn.classList.toggle('hidden', val.trim().length === 0);
       renderChannels();
     }
 
@@ -1799,7 +1320,7 @@
     }
 
     function resetFilters() {
-      activeCategory = 'all';
+      activeCategory = null;
       searchQuery = '';
       document.getElementById('channelSearch').value = '';
       document.getElementById('clearSearchBtn').classList.add('hidden');
@@ -1807,120 +1328,7 @@
       renderChannels();
     }
 
-    function togglePosterMode() {
-      isPosterMode = !isPosterMode;
-      const body = document.body;
-      const btnText = document.getElementById('posterBtnText');
-      const icon = document.getElementById('posterIcon');
-
-      if (isPosterMode) {
-        if (activePackage !== 'compare') {
-          activeCategory = 'all';
-          searchQuery = '';
-          renderCategoryPills();
-          renderChannels();
-        }
-
-        body.classList.add('poster-mode');
-        if (btnText) btnText.textContent = 'Exit Poster Mode';
-        if (icon) icon.className = 'fa-solid fa-compress';
-        showToast('Poster Export Mode Enabled', 'Compact screenshot-ready view activated for Facebook & WhatsApp.');
-      } else {
-        body.classList.remove('poster-mode');
-        if (btnText) btnText.textContent = 'Poster / Flyer Export Mode';
-        if (icon) icon.className = 'fa-solid fa-expand';
-        showToast('Interactive Mode Restored', 'Package tabs, search bar and filters are active again.');
-      }
-    }
-
-    function copyWhatsAppText() {
-      let lines = [];
-
-      if (activePackage === 'compare') {
-        lines = [
-          `📺 *DIALOG TELEVISION — PREPAID PACKAGES (30 DAYS)* ✨`,
-          ``,
-          `🔹 *SUPER ENTRY — Rs. 798/-* (81 Channels)`,
-          `✅ All 21 Local channels, all 5 Nenasa Educational channels, Kids, News, Religious, Music, Eurosport & selected Hindi/Tamil/English entertainment.`,
-          ``,
-          `🔹 *SUPER MAX — Rs. 998/-* (93 Channels)`,
-          `✅ Everything in Super Entry + Warner TV, HITS NOW, Fashion TV, Star Plus, Zee Cinema, SET Max, Star Vijay, Colors Tamil, Kalaignar TV, &flix, HITS MOVIES & Sony Sports Ten 1.`,
-          ``,
-          `🔹 *SPORTS PLUS — Rs. 1,498/-* (105 Channels)`,
-          `✅ Everything in Super Max + *Star Sports 1, Star Sports 2, Star Sports 1 HD, Star Sports Select 1 HD, Star Sports Select 2 HD, Sony Sports 2 HD, Sony Sports 5 HD, Premier Sports*, AXN HD, ROCK Entertainment HD, Colors Cineplex & MTV 90s!`,
-          ``,
-          `──────────────────────`,
-          `🏪 *Chami Multi Shop* — _Qualityය හොයන අයට_`,
-          `"Beyond the Page, Beyond the Connection"`,
-          `📞 *Call:* 0770 54 54 64 / 0710 54 54 64`,
-          `💬 *WhatsApp:* 070 1193383`,
-          `📍 *Location:* Maggona, Sri Lanka`,
-          `⏰ *Open Hours:* 6:00 AM – 10:30 PM`
-        ];
-      } else {
-        const meta = packageMeta[activePackage];
-        const currentCats = getCategoriesForPackage(activePackage);
-
-        lines = [
-          `📺 *DIALOG TELEVISION — ${meta.name.toUpperCase()} PACKAGE (Rs. ${meta.price})* ✨`,
-          `💰 *Monthly Rental:* Rs. ${meta.price} / 30 Days | *${meta.count} Channels Included!*`,
-          ``,
-          `🏪 *Chami Multi Shop* — _Qualityය හොයන අයට_`,
-          `"Beyond the Page, Beyond the Connection"`,
-          `──────────────────────`
-        ];
-
-        currentCats.forEach(cat => {
-          const names = cat.channels.map(c => c.name).join(', ');
-          lines.push(`*${cat.name} (${cat.channels.length}):* ${names}`);
-          lines.push(``);
-        });
-
-        lines.push(`──────────────────────`);
-        lines.push(`📞 *Call:* 0770 54 54 64 / 0710 54 54 64`);
-        lines.push(`💬 *WhatsApp:* 070 1193383`);
-        lines.push(`📍 *Location:* Maggona, Sri Lanka`);
-        lines.push(`⏰ *Open Hours:* 6:00 AM – 10:30 PM`);
-      }
-
-      const postText = lines.join('\n');
-
-      const tempTextArea = document.createElement('textarea');
-      tempTextArea.value = postText;
-      tempTextArea.style.position = 'fixed';
-      tempTextArea.style.left = '-9999px';
-      document.body.appendChild(tempTextArea);
-      tempTextArea.select();
-
-      try {
-        document.execCommand('copy');
-        const label = activePackage === 'compare' ? 'All 3 Packages Summary' : `${packageMeta[activePackage].name} (${packageMeta[activePackage].count} Channels)`;
-        showToast('WhatsApp Post Copied!', `${label} & Chami Multi Shop contact info copied.`);
-      } catch (err) {
-        showToast('Copy Ready', 'Please select and copy the text manually.');
-      } finally {
-        document.body.removeChild(tempTextArea);
-      }
-    }
-
-    let toastTimeout;
-    function showToast(title, subtitle) {
-      const toast = document.getElementById('toastMessage');
-      document.getElementById('toastTitle').textContent = title;
-      document.getElementById('toastSubtitle').textContent = subtitle;
-
-      toast.classList.remove('translate-y-24', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.add('translate-y-24', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3200);
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      makeLogoOuterBackgroundTransparent(document.getElementById('cmsBrandLogo'));
       setupProductCard('fullSet');
       setupProductCard('decoder');
       setupProductCard('accessories');
